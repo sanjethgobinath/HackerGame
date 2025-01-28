@@ -63,15 +63,15 @@ public class Main {
         SecurityPickpocketEntrance.securityPickpocketEntrance();
 
         StdOut.println("An employee is approaching you. Talk to her? [Y/N]");
-        String d1 = StdIn.readString();
+        String d1 = StdIn.readString().trim().toUpperCase();
         if(d1.equals("Y")){
             StdOut.println(yellowText + "Employee: "+ reset + "Hey, do you work here?");
             StdOut.println("Lie? [Y/N]");
-            String d1a = StdIn.readString();
+            String d1a = StdIn.readString().trim().toUpperCase();
             if(d1a.equals("Y")){
                 StdOut.println(greenText + "You: " + reset + "Yes, I work here. I'm just here to do maintainance.");
                 try{
-                    Thread.sleep(200);
+                    Thread.sleep(1000);
                 } catch (InterruptedException e){
                     e.printStackTrace();
                 }
@@ -79,19 +79,19 @@ public class Main {
             }else if(d1a.equals("N")){
                 StdOut.println(greenText + "You: " + reset + "No, I don't.");
                 try{
-                    Thread.sleep(200);
+                    Thread.sleep(1000);
                 } catch (InterruptedException e){
                     e.printStackTrace();
                 }
                 StdOut.println(yellowText + "Employee: " + reset + "Why are you here?");
                 try{
-                    Thread.sleep(200);
+                    Thread.sleep(1000);
                 } catch (InterruptedException e){
                     e.printStackTrace();
                 }
                 StdOut.println(greenText + "You: " + reset + "I'm here to meet someone.");
                 try{
-                    Thread.sleep(200);
+                    Thread.sleep(800);
                 } catch (InterruptedException e){
                     e.printStackTrace();
                 }

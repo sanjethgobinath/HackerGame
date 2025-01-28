@@ -34,7 +34,7 @@ public class PasswordPuzzle {
                 System.out.println(); // Spacing
 
                 // Provide a hint if health is low
-                if (Player.getHealth() < 8 && !hintGiven) {
+                if (attempts >= 5 && !hintGiven) {
                     System.out.println("Hint: animal starts with " + greenText + password.substring(3, 5) + reset
                     + " is " + animal.length() + " letters long" + " and number is " + greenText + randomInt + reset);
                     hintGiven = true;
