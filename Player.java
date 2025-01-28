@@ -76,14 +76,26 @@ public class Player {
         }
     }
 
-    public static void getSus(){
+    public static void addSus(){
         sus++;
         if(sus == 1){
-            System.out.println(sus + " guard has gained suspicion");
+            System.out.println(sus + " person has gained suspicion");
         }else{
-            System.out.println(sus + " guards have gained suspicion");
+            System.out.println(sus + " people have gained suspicion");
         }
 
+    }
+
+    public static void checkSus(){
+        if(sus == 5){
+            System.out.println("Be cautious. Multiple people are suspicious of you.");
+        }else if(sus == 10){
+            System.out.println("Too many people are suspiscious of you. They're considering calling the police.");
+        }else if(sus == 15){
+            System.out.println("Police have been called.");
+        }else if(sus == 20){
+            PoliceChase.policeChase();
+        }
     }
     
 }

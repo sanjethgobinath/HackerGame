@@ -59,9 +59,51 @@ public class Main {
         } catch (InterruptedException e){
             e.printStackTrace();
         }
-        System.out.println("RUNNING");
         
         SecurityPickpocketEntrance.securityPickpocketEntrance();
+
+        StdOut.println("An employee is approaching you. Talk to her? [Y/N]");
+        String d1 = StdIn.readString();
+        if(d1.equals("Y")){
+            StdOut.println(yellowText + "Employee: "+ reset + "Hey, do you work here?");
+            StdOut.println("Lie? [Y/N]");
+            String d1a = StdIn.readString();
+            if(d1a.equals("Y")){
+                StdOut.println(greenText + "You: " + reset + "Yes, I work here. I'm just here to do maintainance.");
+                try{
+                    Thread.sleep(200);
+                } catch (InterruptedException e){
+                    e.printStackTrace();
+                }
+                StdOut.println(yellowText + "Employee: " + reset + "Oh, okay. *walks away*");
+            }else if(d1a.equals("N")){
+                StdOut.println(greenText + "You: " + reset + "No, I don't.");
+                try{
+                    Thread.sleep(200);
+                } catch (InterruptedException e){
+                    e.printStackTrace();
+                }
+                StdOut.println(yellowText + "Employee: " + reset + "Why are you here?");
+                try{
+                    Thread.sleep(200);
+                } catch (InterruptedException e){
+                    e.printStackTrace();
+                }
+                StdOut.println(greenText + "You: " + reset + "I'm here to meet someone.");
+                try{
+                    Thread.sleep(200);
+                } catch (InterruptedException e){
+                    e.printStackTrace();
+                }
+                StdOut.println(yellowText + "Employee: " + reset + "Oh. Okay.");
+                Player;
+
+            }
+        }else if(d1.equals("N")){
+
+        }else{
+
+        }
  
     }
     
