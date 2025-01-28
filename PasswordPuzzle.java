@@ -1,4 +1,3 @@
-import java.util.Scanner;
 import HackerGame.*;
 public class PasswordPuzzle {
     private static final String redText = "\u001B[31m";
@@ -28,7 +27,6 @@ public class PasswordPuzzle {
             } else {
                 System.out.println(redText + "Wrong Password. Try again." + reset);
                 Player.subtractHealth();
-                System.out.println("You have " + Player.getHealth() + " health left.");
                 Player.checkHealth();
                 System.out.println(); // Spacing
 

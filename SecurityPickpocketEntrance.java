@@ -15,14 +15,15 @@ public class SecurityPickpocketEntrance {
                 System.out.println("He is distracted. Press E to pickpocket.");
                 String secInput = StdIn.readString().trim().toUpperCase();
                 if (secInput.equals("E")) {
-                    System.out.println(greenText + "Successfully pickpocketed the guard!" + reset);
+                    System.out.println(greenText + "Pickpocket Successful. Keycard Obtained." + reset);
                     Player.addItem("Keycard");
                 } else {
                     System.out.println(redText + "Missed the opportunity to pickpocket." + reset);
                 }
             } else if (input.equals("N")) {
-                System.out.println(redText + "INTEGRITY COMPROMISED. " + reset + "You have been thrown out of the building.");
-                System.exit(0);
+                System.out.println(redText + "INTEGRITY COMPROMISED. " + reset + "You have lost 2 health");
+                Player.subtractHealth();
+                Player.subtractHealth();
             } else {
                 System.out.println("Invalid input. Must be Y or N.");
             }

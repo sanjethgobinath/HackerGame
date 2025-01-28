@@ -3,14 +3,7 @@ import java.io.File;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
-
-import HackerGame.StdIn;
-import HackerGame.StdOut;
-
-import java.util.NoSuchElementException;
-import java.util.Scanner;
-import java.util.TimerTask;
-import java.util.Timer;
+import HackerGame.*;
 public class Main {
     
     //special text thingies
@@ -21,10 +14,8 @@ public class Main {
     private static final String reset = "\u001B[0m";
     private static final String yellowText = "\u001B[33m";
     
-    private static final char[][] map = ReaderClass.getTxt("map");
+    //private static final char[][] map = ReaderClass.getTxt("map");
     private static Clip clip;
-    private static boolean timeExpired = false;
-    private static final int TIME_LIMIT_MS = 3000; 
    
    
     public static void main(String[] args){
@@ -71,48 +62,7 @@ public class Main {
         System.out.println("RUNNING");
         
         SecurityPickpocketEntrance.securityPickpocketEntrance();
-        
-       
-        /* 
-        System.out.println(redText + "\nA Security Guard Has Found You." + reset);
-        StdOut.println("Hide? [Y/N]");
-        String input = StdIn.readString();
-        input = input.trim().toUpperCase();
-        if (input.equals("Y")) {
-        System.out.println("Security is distracted. Press E to pickpocket.");
-        String secondInput = StdIn.readString();
-        secondInput = secondInput.trim().toUpperCase();
-        
-        if (input.equals("E")) {
-            System.out.println("Obtained Keycard.");
-            Player.addItem("Keycard");
-        }else{
-        
-        }
-        } else if (input.equals("N")) {
-        System.out.println(redText + "INTEGRITY COMPROMISED. " + reset + "You have been thrown out of the building.");
-        System.out.println("");
-        System.exit(0);
-        } else {
-        System.out.println("Invalid input. Type Y or N.");
-        
-        }
-        */
  
-    }
-    
-    public static void testing(){
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("Enter something: ");
-        
-        if (scanner.hasNextLine()) {
-            String input = scanner.nextLine();
-            System.out.println("You entered: " + input);
-        } else {
-            System.out.println("No input available.");
-        }
-        
-        scanner.close();
     }
     
     public static void PlayMusic(String location) {

@@ -8,6 +8,7 @@ public class Player {
     public static int health = defaultHealth;
     public static ArrayList<String> inventory = new ArrayList<>();
     
+    public static int sus = 0;
     //  HEALTH INFORMATION
     public static int getHealth(){
         return health;
@@ -18,6 +19,7 @@ public class Player {
     }
 
     public static void checkHealth(){
+        System.out.println("You have " + Player.getHealth() + " health left.");
         if (health <= 0) {
             System.out.println("Health is 0. You have been killed.");
             System.exit(0);  // Terminate the program if health is 0
@@ -72,6 +74,16 @@ public class Player {
         } else {
             System.out.println(item + " is not in your inventory. You cannot use it.");
         }
+    }
+
+    public static void getSus(){
+        sus++;
+        if(sus == 1){
+            System.out.println(sus + " guard has gained suspicion");
+        }else{
+            System.out.println(sus + " guards have gained suspicion");
+        }
+
     }
     
 }
