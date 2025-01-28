@@ -19,6 +19,7 @@ public class Main {
     private static final String italicsStart = "\033[3m";
     private static final String italicsEnd = "\033[0m";
     private static final String reset = "\u001B[0m";
+    private static final String yellowText = "\u001B[33m";
     
     private static final char[][] map = ReaderClass.getTxt("map");
     private static Clip clip;
@@ -32,6 +33,7 @@ public class Main {
         // this is a test from somwhere online
         //Instructions
         //new test
+        StdOut.println(yellowText + "Music by Sanjeth Gobinath" + reset);
         System.out.println(redText + italicsStart + 
             "Welcome player." + "\n" + 
             "\nYou are an experienced hacker working for HAKSYS Corp." + 
@@ -57,6 +59,7 @@ public class Main {
         
         System.out.println(); //Enter next line
         //ReaderClass.print2DArr(map);
+        
 
         PasswordPuzzle.findPassword();
        

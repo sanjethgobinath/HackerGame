@@ -1,5 +1,5 @@
 import java.util.Scanner;
-
+import HackerGame.*;
 public class PasswordPuzzle {
     private static final String redText = "\u001B[31m";
     private static final String greenText = "\u001B[32m";
@@ -12,13 +12,13 @@ public class PasswordPuzzle {
         String rand = Integer.toString(randomInt);
         String animal = animalChoice[animalRandInt];
         String password = "red" + animal + rand;
-        Scanner scanner = new Scanner(System.in);
+        //Scanner scanner = new Scanner(System.in);
         boolean hintGiven = false;
 
         // Loop until the correct password is guessed
         while (true) {
             System.out.println("Enter Password:");
-            String guess = scanner.nextLine(); // Get user input
+            String guess = StdIn.readString(); // Get user input
 
             // Check if the guess is correct
             if (guess.equals(password)) {
@@ -43,6 +43,6 @@ public class PasswordPuzzle {
         }
 
         // Close the scanner only after the method is completely done
-        scanner.close();
+        //scanner.close();
     }
 }
