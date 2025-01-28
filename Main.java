@@ -96,7 +96,8 @@ public class Main {
                     e.printStackTrace();
                 }
                 StdOut.println(yellowText + "Employee: " + reset + "Oh. Okay.");
-                Player;
+                Player.addSus();
+                Player.checkSus();
 
             }
         }else if(d1.equals("N")){

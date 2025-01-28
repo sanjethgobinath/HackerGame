@@ -13,6 +13,7 @@ public class PasswordPuzzle {
         String password = "red" + animal + rand;
         //Scanner scanner = new Scanner(System.in);
         boolean hintGiven = false;
+        int attempts = 0;
 
         // Loop until the correct password is guessed
         while (true) {
@@ -26,8 +27,10 @@ public class PasswordPuzzle {
                 break; // Exit the loop if the guess is correct
             } else {
                 System.out.println(redText + "Wrong Password. Try again." + reset);
-                Player.subtractHealth();
-                Player.checkHealth();
+                attempts++;
+                if(attempts % 3 == 0){
+                    Player.addSus();
+                }
                 System.out.println(); // Spacing
 
                 // Provide a hint if health is low
