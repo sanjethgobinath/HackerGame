@@ -31,6 +31,7 @@ public class Main {
         PlayMusic(filepath);
         
         //Instructions
+        //new test
         System.out.println(redText + italicsStart + 
             "Welcome player." + "\n" + 
             "\nYou are an experienced hacker working for HAKSYS Corp." + 
