@@ -1,5 +1,6 @@
 import HackerGame.*;
 
+
 public class Dialogue {
     
     private static final String redText = "\u001B[31m";

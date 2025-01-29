@@ -8,12 +8,14 @@ public class ReaderClass {
         try {
             List<String> output = new ArrayList<>();
             Scanner fileIn = new Scanner(new File(name + ".txt"));
+
             while (fileIn.hasNext()){
                 String lineIn = fileIn.nextLine(); 
                 output.add(lineIn);
             }
             fileIn.close();
             return output;
+            
         } catch (Exception e) {
             throw new RuntimeException(name + " isn't a file");
         }
@@ -25,7 +27,9 @@ public class ReaderClass {
     }
     public static char[][] getTxt(String name){
         List<String> list = parseTxt(name);
+
         char[][] x = new char[list.size()][list.get(0).length()];
+
         for (int r = 0; r < x.length; r++){
             for (int c = 0; c < x[0].length; c++){
                 x[r][c] = list.get(r).charAt(c);
