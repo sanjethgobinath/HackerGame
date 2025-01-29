@@ -54,10 +54,25 @@ public class Dialogue {
     }
     public static void interactionTwo(){
         StdOut.println(yellowText + "Businessman: " + reset + "So, I haven't seen you here before. Are you that new intern?");
+        sleepThread(1000);
         StdOut.println("Lie? [Y/N]");
         String d2a = StdIn.readString().trim().toUpperCase();
         if (d2a.equals("Y")){
+            sleepThread(1000);
             StdOut.println(greenText + "You: " + reset + "Yeah, that's me, its only my first day here.");
+            sleepThread(1000);
+            StdOut.println(yellowText + "Businessman: " + reset + "Good to see you around!");
+            sleepThread(1000);
+            StdOut.println(yellowText + "Businessman: " + reset + "If you don't mind, I have a favor to ask of you.");
+            sleepThread(1000);
+            StdOut.println(yellowText + "Businessman: " + reset + "Can you tell Amy that we had a potential data leak while you are up there?");
+            sleepThread(1000);
+            StdOut.println("Do the favor for the businessman? [Y/N]");
+            String d2b = StdIn.readString().trim().toUpperCase();
+            if (d2b.equals("Y")){
+                StdOut.println(greenText + "You: " + reset + "No problem, I'll make sure to mention it.");
+                sleepThread(1000);
+            }
         }
     }   
     public static void interactionThree(){
