@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Player {
     public static final String CYAN = "\u001B[36m";
@@ -7,7 +8,8 @@ public class Player {
     public static final int defaultHealth = 10;
     public static int health = defaultHealth;
     public static ArrayList<String> inventory = new ArrayList<>();
-    
+    public static ArrayList<String> garage = new ArrayList<>();
+    //possible cars- Honda Civic Type-R (2022) Mitsubishi Lancer Evo X (2015) Subaru WRX (2025) Toyota GR Supra (2025)
     public static int sus = 0;
     //  HEALTH INFORMATION
     public static int getHealth(){
@@ -53,9 +55,10 @@ public class Player {
             System.out.println("Your inventory is empty.");
         } else {
             System.out.println("Your inventory contains:");
-            for (String item : inventory) {
-                System.out.println("- " + CYAN + item + RESET);
+            for(int i = 0; i < inventory.size(); i++){
+                System.out.println("- " + CYAN + inventory.get(i) + RESET);
             }
+            
         }
     }
 
@@ -87,13 +90,13 @@ public class Player {
     }
 
     public static void checkSus(){
-        if(sus == 5){
+        if(sus == 2){
             System.out.println("Be cautious. Multiple people are suspicious of you.");
-        }else if(sus == 10){
+        }else if(sus == 5){
             System.out.println("Too many people are suspiscious of you. They're considering calling the police.");
-        }else if(sus == 15){
+        }else if(sus == 7){
             System.out.println("Police have been called.");
-        }else if(sus == 20){
+        }else if(sus == 10){
             PoliceChase.policeChase();
         }
     }

@@ -17,6 +17,8 @@ public class SecurityPickpocketEntrance {
                 if (secInput.equals("E")) {
                     System.out.println(greenText + "Pickpocket Successful. Keycard Obtained." + reset);
                     Player.addItem("Keycard");
+                    System.out.println("Picked up keys for a Honda Civic Type-R.");
+                    Player.garage.add("Honda Civic Type-R (2022)");
                 } else {
                     System.out.println(redText + "Missed the opportunity to pickpocket." + reset);
                 }
