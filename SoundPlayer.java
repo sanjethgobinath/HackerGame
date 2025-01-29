@@ -34,7 +34,7 @@ public class SoundPlayer {
 
     public static void startMusic(){
         if (clip == null && !clip.isRunning()){
-            String filepath = "testmusic.wav";
+            String filepath = "MusicFiles/backgroundmusic1.wav";
             PlayMusic(filepath);
         }
     }

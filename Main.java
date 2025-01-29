@@ -17,7 +17,7 @@ public class Main {
     private static Clip clip;
    
     public static void main(String[] args){
-        String filepath = "backgroundmusic.wav";
+        String filepath = "MusicFiles/backgroundmusic1.wav";
         SoundPlayer.PlayMusic(filepath);
         // this is a test from somwhere online
         //Instructions

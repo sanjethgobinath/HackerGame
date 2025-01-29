@@ -19,6 +19,7 @@ public class PasswordPuzzle {
         while (true) {
             System.out.println("Enter Password:");
             String guess = StdIn.readString(); // Get user input
+            
 
             // Check if the guess is correct
             if (guess.equals(password)) {

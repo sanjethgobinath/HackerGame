@@ -3,7 +3,7 @@ import HackerGame.*;
 public class PoliceChase {
         public static void policeChase(){
             SoundPlayer.stopMusic();
-            String filepath = "policeChase.wav";
+            String filepath = "MusicFiles/policeChase.wav";
             SoundPlayer.PlayMusic(filepath);
     
             StdOut.println("Choose a car: ");
