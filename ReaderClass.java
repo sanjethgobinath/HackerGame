@@ -12,6 +12,7 @@ public class ReaderClass {
                 String lineIn = fileIn.nextLine(); 
                 output.add(lineIn);
             }
+            fileIn.close();
             return output;
         } catch (Exception e) {
             throw new RuntimeException(name + " isn't a file");

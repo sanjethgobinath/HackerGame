@@ -7,8 +7,8 @@ public class Dialogue {
     private static final String italicsStart = "\033[3m";
     private static final String italicsEnd = "\033[0m";
     private static final String reset = "\u001B[0m";
-    private static final String yellowText = "\u001B[33m";'
-'
+    private static final String yellowText = "\u001B[33m";
+
     public static void dialogue1(){
         StdOut.println("An employee is approaching you. Talk to her? [Y/N]");
         String d1 = StdIn.readString().trim().toUpperCase();
