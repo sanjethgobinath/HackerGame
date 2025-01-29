@@ -8,8 +8,9 @@ public class Dialogue {
     private static final String italicsEnd = "\033[0m";
     private static final String reset = "\u001B[0m";
     private static final String yellowText = "\u001B[33m";
+    private static final String magentaText = "\u001B[35m";
 
-    public static void dialogue1(){
+    public static void interactionOne(){
         StdOut.println("An employee is approaching you. Talk to her? [Y/N]");
         String d1 = StdIn.readString().trim().toUpperCase();
         if (d1.equals("Y")){
@@ -34,17 +35,27 @@ public class Dialogue {
         } else if(d1.equals("N")){
             StdOut.println(yellowText + "Employee: " + reset + "Hey, what's the rush?");
             sleepThread(1000);
-            StdOut.println(greenText + "You: " + reset + "*walks away*");
+            StdOut.println(magentaText + italicsStart + "You walk away" + italicsEnd + reset);
             Player.addSus();
             Player.checkSus();
         } else{
-            dialogue1();
+            interactionOne();
         }
     }
-    public static void dialogue2(){
-
+    public static void narrationOne(){
+        StdOut.println(magentaText + italicsStart + "You walk to the elevator headed up and walk inside." + italicsEnd + reset);
+        sleepThread(1000);
+        StdOut.println(magentaText + italicsStart + "There is a businessman already inside. He holds the door for you." + italicsEnd + reset);
+        sleepThread(1000);
+        StdOut.println(yellowText + "Businessman: " + reset + "What floor are you headed to?");
+        sleepThread(1000);
+        StdOut.println(greenText + "You: " + reset + "Floor 9, please.");
+        sleepThread(1000);
     }
-    public static void dialogue3(){
+    public static void interactionTwo(){
+            
+    }   
+    public static void interactionThree(){
 
     }
     public static void sleepThread(int millis){

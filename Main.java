@@ -12,6 +12,7 @@ public class Main {
     private static final String italicsEnd = "\033[0m";
     private static final String reset = "\u001B[0m";
     private static final String yellowText = "\u001B[33m";
+    private static final String magentaText = "\u001B[35m";
     
     private static Clip clip;
    
@@ -22,12 +23,12 @@ public class Main {
         //Instructions
         //new test
         StdOut.println(yellowText + "Music by Sanjeth Gobinath" + reset);
-        System.out.println(redText + italicsStart + 
+        System.out.println(magentaText + italicsStart + 
             "Welcome player." + "\n" + 
             "\nYou are an experienced hacker working for HAKSYS Corp." + 
             "\nYour job is to infiltrate the server room of Y-Systems Corp and steal all their data." +
             "\nYou will encounter several obstacles; First you need to guess the password" +
-            "\nThe password starts with the word red, has a common animal that starts with F, and a number from 1-5." + 
+            "\n\nThe password starts with the word red, has a common animal that starts with F, and a number from 1-5." + 
             "\nGood Luck, Comrade." +
             italicsEnd + reset);
         System.out.println();
@@ -46,8 +47,8 @@ public class Main {
         sleepThread(1000);
     
         SecurityPickpocketEntrance.securityPickpocketEntrance();
-        Dialogue.dialogue1();
-
+        Dialogue.interactionOne();
+        Dialogue.narrationOne();
     }
 
     public static void sleepThread(int millis){
