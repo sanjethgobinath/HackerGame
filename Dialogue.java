@@ -53,7 +53,12 @@ public class Dialogue {
         sleepThread(1000);
     }
     public static void interactionTwo(){
-            
+        StdOut.println(yellowText + "Businessman: " + reset + "So, I haven't seen you here before. Are you that new intern?");
+        StdOut.println("Lie? [Y/N]");
+        String d2a = StdIn.readString().trim().toUpperCase();
+        if (d2a.equals("Y")){
+            StdOut.println(greenText + "You: " + reset + "Yeah, that's me, its only my first day here.");
+        }
     }   
     public static void interactionThree(){
 
