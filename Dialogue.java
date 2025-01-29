@@ -35,13 +35,14 @@ public class Dialogue {
         } else if(d1.equals("N")){
             StdOut.println(yellowText + "Employee: " + reset + "Hey, what's the rush?");
             sleepThread(1000);
-            StdOut.println(magentaText + italicsStart + "You walk away" + italicsEnd + reset);
+            StdOut.println(magentaText + italicsStart + "*walks away*" + italicsEnd + reset);
             Player.addSus();
             Player.checkSus();
         } else{
             interactionOne();
         }
     }
+    
     public static void narrationOne(){
         StdOut.println(magentaText + italicsStart + "You walk to the elevator headed up and walk inside." + italicsEnd + reset);
         sleepThread(1000);
@@ -52,6 +53,7 @@ public class Dialogue {
         StdOut.println(greenText + "You: " + reset + "Floor 9, please.");
         sleepThread(1000);
     }
+    
     public static void interactionTwo(){
         StdOut.println(yellowText + "Businessman: " + reset + "So, I haven't seen you here before. Are you that new intern?");
         sleepThread(1000);
@@ -72,12 +74,23 @@ public class Dialogue {
             if (d2b.equals("Y")){
                 StdOut.println(greenText + "You: " + reset + "No problem, I'll make sure to mention it.");
                 sleepThread(1000);
+            }else if(d2b.equals("N")){
+                StdOut.println(greenText + "You: " + reset + "Sorry, I'm already working on something David assigned me.");
+                sleepThread(1000);
+                StdOut.println(yellowText + "*David? Who's David?*");
+                Player.addSus();
+                Player.checkSus();
+            }else{
+                StdOut.println("invalid input.");
             }
+        } else if(d2a.equals("N")){
+
         }
     }   
     public static void interactionThree(){
 
     }
+    
     public static void sleepThread(int millis){
         try{
             Thread.sleep(millis);
