@@ -4,6 +4,10 @@ import java.util.Arrays;
 public class Player {
     public static final String CYAN = "\u001B[36m";
     public static final String RESET = "\u001B[0m";
+    private static final String redText = "\u001B[31m";
+    private static final String greenText = "\u001B[32m";
+
+
     
     public static final int defaultHealth = 10;
     public static int health = defaultHealth;
@@ -11,6 +15,7 @@ public class Player {
     public static ArrayList<String> garage = new ArrayList<>();
     //possible cars- Honda Civic Type-R (2022) Mitsubishi Lancer Evo X (2015) Subaru WRX (2025) Toyota GR Supra (2025)
     public static int sus = 0;
+    
     //  HEALTH INFORMATION
     public static int getHealth(){
         return health;
@@ -39,7 +44,7 @@ public class Player {
 
     public static void addItem(String item) {
         inventory.add(item);
-        System.out.println(item + " has been added to your inventory.");
+        System.out.println(greenText + item + RESET + " has been added to your inventory.");
     }
 
     public static void removeItem(String item) {
@@ -91,13 +96,18 @@ public class Player {
 
     public static void checkSus(){
         if(sus == 2){
-            System.out.println("Be cautious. Multiple people are suspicious of you.");
+            System.out.println(redText + "Be cautious. Multiple people are suspicious of you." + RESET);
         }else if(sus == 5){
-            System.out.println("Too many people are suspiscious of you. They're considering calling the police.");
+            System.out.println(redText + "Too many people are suspiscious of you. They're considering calling the police." + RESET);
         }else if(sus == 7){
-            System.out.println("Police have been called.");
+            System.out.println(redText + "Police have been called." + RESET);
         }else if(sus == 10){
-            System.out.println("Police are here. Get ready to run.");
+            System.out.println(redText + "Police are here. Get ready to run." + RESET);
+            try{
+                Thread.sleep(1000);
+            } catch (InterruptedException e){
+                e.printStackTrace();
+            }
             PoliceChase.policeChase();
         }
     }

@@ -18,7 +18,7 @@ public class Main {
    
     public static void main(String[] args){
         String filepath = "backgroundmusic.wav";
-        PlayMusic(filepath);
+        SoundPlayer.PlayMusic(filepath);
         // this is a test from somwhere online
         //Instructions
         //new test
@@ -32,6 +32,12 @@ public class Main {
             "\nGood Luck, Comrade." +
             italicsEnd + reset);
         System.out.println();
+        
+        try{
+            Thread.sleep(7000);
+        } catch (InterruptedException e){
+            e.printStackTrace();
+        }
         
         String intro = greenText + "Hello. Welcome to Y-Systems."  + 
             "\nPlease enter your password." + reset;
@@ -49,6 +55,7 @@ public class Main {
         SecurityPickpocketEntrance.securityPickpocketEntrance();
         Dialogue.interactionOne();
         Dialogue.narrationOne();
+        Dialogue.interactionTwo();
     }
 
     public static void sleepThread(int millis){
@@ -59,38 +66,6 @@ public class Main {
         }
     }
     
-    public static void PlayMusic(String location) {
-        new Thread(() -> {
-            try {
-                File musicPath = new File(location);
-                if (musicPath.exists()) {
-                    AudioInputStream audioInput = AudioSystem.getAudioInputStream(musicPath);
-                    clip = AudioSystem.getClip();
-                    clip.open(audioInput);
-                    clip.loop(Clip.LOOP_CONTINUOUSLY); // Enable continuous looping
-                    Thread.sleep(Long.MAX_VALUE); // Keep thread alive to play music
-                } else {
-                    System.out.println("Cannot find file: " + location);
-                }
-            } catch (Exception e) {
-                System.out.println("Error playing music: " + e.getMessage());
-            }
-        }).start();
-    }
-
-    public static void stopMusic() {
-        if (clip != null && clip.isRunning()) {
-            clip.stop();
-            clip.close();
-        }
-    }
-
-    public static void startMusic(){
-        if (clip == null && !clip.isRunning()){
-            String filepath = "testmusic.wav";
-            PlayMusic(filepath);
-        }
-    }
     
 }
 
