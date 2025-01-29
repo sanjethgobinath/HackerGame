@@ -28,7 +28,7 @@ public class PasswordPuzzle {
             } else {
                 System.out.println(redText + "Wrong Password. Try again." + reset);
                 attempts++;
-                if(attempts % 3 == 0){
+                if(attempts % 2 == 0){
                     Player.addSus();
                 }
                 System.out.println(); // Spacing

@@ -1,5 +1,4 @@
 import java.io.File;
-//import java.util.Scanner;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
@@ -14,9 +13,7 @@ public class Main {
     private static final String reset = "\u001B[0m";
     private static final String yellowText = "\u001B[33m";
     
-    //private static final char[][] map = ReaderClass.getTxt("map");
     private static Clip clip;
-   
    
     public static void main(String[] args){
         String filepath = "backgroundmusic.wav";
@@ -41,71 +38,24 @@ public class Main {
         //Typewriter effect
         for(int i = 0; i < intro.length(); i++){
             System.out.print(intro.charAt(i));
-            try{
-                Thread.sleep(50);
-            } catch (InterruptedException e){
-                e.printStackTrace();
-            }
+            sleepThread(50);
         }
         
-        System.out.println(); //Enter next line
-        //ReaderClass.print2DArr(map);
-        
-
+        System.out.println(); //Enter next line        
         PasswordPuzzle.findPassword();
-       
+        sleepThread(1000);
+    
+        SecurityPickpocketEntrance.securityPickpocketEntrance();
+        Dialogue.dialogue1();
+
+    }
+
+    public static void sleepThread(int millis){
         try{
-            Thread.sleep(1200);
+            Thread.sleep(millis);
         } catch (InterruptedException e){
             e.printStackTrace();
         }
-        
-        SecurityPickpocketEntrance.securityPickpocketEntrance();
-
-        StdOut.println("An employee is approaching you. Talk to her? [Y/N]");
-        String d1 = StdIn.readString().trim().toUpperCase();
-        if(d1.equals("Y")){
-            StdOut.println(yellowText + "Employee: "+ reset + "Hey, do you work here?");
-            StdOut.println("Lie? [Y/N]");
-            String d1a = StdIn.readString().trim().toUpperCase();
-            if(d1a.equals("Y")){
-                StdOut.println(greenText + "You: " + reset + "Yes, I work here. I'm just here to do maintainance.");
-                try{
-                    Thread.sleep(1000);
-                } catch (InterruptedException e){
-                    e.printStackTrace();
-                }
-                StdOut.println(yellowText + "Employee: " + reset + "Oh, okay. *walks away*");
-            }else if(d1a.equals("N")){
-                StdOut.println(greenText + "You: " + reset + "No, I don't.");
-                try{
-                    Thread.sleep(1000);
-                } catch (InterruptedException e){
-                    e.printStackTrace();
-                }
-                StdOut.println(yellowText + "Employee: " + reset + "Why are you here?");
-                try{
-                    Thread.sleep(1000);
-                } catch (InterruptedException e){
-                    e.printStackTrace();
-                }
-                StdOut.println(greenText + "You: " + reset + "I'm here to meet someone.");
-                try{
-                    Thread.sleep(800);
-                } catch (InterruptedException e){
-                    e.printStackTrace();
-                }
-                StdOut.println(yellowText + "Employee: " + reset + "Oh. Okay.");
-                Player.addSus();
-                Player.checkSus();
-
-            }
-        }else if(d1.equals("N")){
-
-        }else{
-
-        }
- 
     }
     
     public static void PlayMusic(String location) {

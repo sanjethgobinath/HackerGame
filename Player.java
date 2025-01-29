@@ -97,6 +97,7 @@ public class Player {
         }else if(sus == 7){
             System.out.println("Police have been called.");
         }else if(sus == 10){
+            System.out.println("Police are here. Get ready to run.");
             PoliceChase.policeChase();
         }
     }
