@@ -17,6 +17,17 @@ public class Main {
     private static Clip clip;
    
     public static void main(String[] args){
+        Thread videoThread = new Thread(() -> {
+            VideoPlayer.playVideo("introVid.mp4");
+        });
+        videoThread.start();
+        try {
+            videoThread.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        sleepThread(97000);
+
         String filepath = "MusicFiles/backgroundmusic1.wav";
         SoundPlayer.PlayMusic(filepath);
         // this is a test from somwhere online
@@ -65,6 +76,8 @@ public class Main {
             e.printStackTrace();
         }
     }
+
+    
     
     
 }
