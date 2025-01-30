@@ -81,6 +81,7 @@ public class Player {
                 health = Math.min(health + 5, defaultHealth); // Heal player
                 System.out.println("Your health has been restored to " + health + ".");
             }
+            
         } else {
             System.out.println(item + " is not in your inventory. You cannot use it.");
         }
