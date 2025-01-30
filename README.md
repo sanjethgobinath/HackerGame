@@ -1,3 +1,3 @@
 pls give A+ :)
 
-Runs on Java 11.0.14.1
+Please run on local machine (Java 22)
