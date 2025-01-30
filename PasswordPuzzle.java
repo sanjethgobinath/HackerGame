@@ -31,6 +31,7 @@ public class PasswordPuzzle {
                 attempts++;
                 if(attempts % 2 == 0){
                     Player.addSus();
+                    Player.checkSus();
                 }
                 System.out.println(); // Spacing
 
