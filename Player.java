@@ -72,7 +72,9 @@ public class Player {
             // Logic for using the item
             System.out.println("You used " + item + ".");
             // Example: Remove the item after use
-            removeItem(item);
+            if(item != "Keycard"){
+                removeItem(item);
+            }
 
             // Add specific effects for known items
             if (item.equalsIgnoreCase("Health Potion")) {

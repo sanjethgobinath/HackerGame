@@ -87,8 +87,16 @@ public class Dialogue {
         } else if(d2a.equals("N")){
                 sleepThread(2000);
                 StdOut.println(yellowText + "Businessman: " + reset + "Oh. So, why are you here?");
+                sleepThread(2000);
+                StdOut.println(greenText + "You: " + reset +
+                "I'm just here to fix the... uh.. A/C. Yeah, I'm here to fix the A/C.");
+                sleepThread(2000);
+                StdOut.println(yellowText + "Businessman: " + reset + "*Eduardo is our HVAC tech... Something's off.*");
+                Player.addSus();
+                Player.checkSus();
         }
     }   
+    
     public static void interactionThree(){
 
     }
