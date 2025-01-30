@@ -1,5 +1,5 @@
-public class Constants {
-    public static final class StringModifiers {
+public class C {
+    public static final class sMods {
     //Colors
     public static final String redText = "\u001B[31m";
     public static final String greenText = "\u001B[32m";

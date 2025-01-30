@@ -1,6 +1,8 @@
 import HackerGame.*;
 
 public class PoliceChase {
+    static boolean isHighway;
+
     public static void policeChase(){
         SoundPlayer.stopMusic();
         String filepath = "MusicFiles/policeChase.wav";
@@ -45,10 +47,28 @@ public class PoliceChase {
 
     public static void hondaCivic(){
         StdOut.println("Take the highway?");
+        String option = StdIn.readString().trim().toUpperCase();
+        if(option.equals("Y")){
+            StdOut.println("Okay. Taking I-95...");
+            isHighway = true;
+        }else if(option.equals("N")){
+            StdOut.println("Okay. Staying on Route 69.");
+            isHighway = false;
+        }
+        
     }
 
     public static void toyoSupra(){
         StdOut.println("Take the highway?");
+        String option = StdIn.readString().trim().toUpperCase();
+        if(option.equals("Y")){
+            StdOut.println("Okay. Taking I-95...");
+            isHighway = true;
+        }else if(option.equals("N")){
+            StdOut.println("Okay. Staying on Route 69.");
+            isHighway = false;
+        }
+
 
     }
 
@@ -63,5 +83,16 @@ public class PoliceChase {
 
     public static void onFoot(){
         StdOut.println("Escape via the HVAC system. Find a vent.");
+        StdOut.println("Available Vents: West, North, Elevator, Storage. [W, N, E, S]");
+        String option = StdIn.readString().trim().toUpperCase();
+        if(option.equals("W")){
+            
+        }else if(option.equals("N")){
+
+        }else if(option.equals("E")){
+
+        }else if(option.equals("S")){
+
+        }
     }
 }
