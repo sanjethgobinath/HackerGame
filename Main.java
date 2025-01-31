@@ -45,7 +45,7 @@ public class Main {
         System.out.println();
         
         try{
-            Thread.sleep(7000);
+            Thread.sleep(5000);
         } catch (InterruptedException e){
             e.printStackTrace();
         }
@@ -67,6 +67,7 @@ public class Main {
         Dialogue.interactionOne();
         Dialogue.narrationOne();
         Dialogue.interactionTwo();
+
     }
 
     public static void sleepThread(int millis){

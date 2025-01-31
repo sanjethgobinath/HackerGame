@@ -15,7 +15,7 @@ public class PoliceChase {
             onFoot();
         }else{
             for(int i = 0; i < Player.garage.size(); i++){
-                System.out.println(count + ". ");
+                System.out.print(count + ". ");
                 count++;
                 for(int j = 0; j < Player.garage.get(i).length(); j++){
                     System.out.print(Player.garage.get(i).charAt(j));
@@ -30,23 +30,31 @@ public class PoliceChase {
 
             System.out.println();
             StdOut.println("Which car do you want to use? [1, 2, 3]");
-            int choice = StdIn.readInt();
-            if(choice == 1){
-                StdOut.println("You've chosen: " + Player.garage.get(0));
-                hondaCivic();
-            }else if(choice == 2){
-                StdOut.println("You've chosen: " + Player.garage.get(1));
-                subiWrx();
-            }else if(choice == 3){
-                StdOut.println("You've chosen: " + Player.garage.get(2));
-                toyoSupra();
-                
+            while(true){
+                int choice = StdIn.readInt();
+                try {
+                    if(choice == 1){  
+                        StdOut.println("You've chosen: " + Player.garage.get(0));
+                        hondaCivic();
+                }else if(choice == 2){
+                    StdOut.println("You've chosen: " + Player.garage.get(1));
+                    subiWrx();
+                }else if(choice == 3){
+                    StdOut.println("You've chosen: " + Player.garage.get(2));
+                    toyoSupra();
+                    
+                }else{
+                    StdOut.println("Such a car does not exist.");
+                }
+                } catch (IndexOutOfBoundsException e) {
+                    System.out.println("Car not unlocked yet.");
+                }
             }
         }
     }
 
     public static void hondaCivic(){
-        StdOut.println("Take the highway?");
+        StdOut.println("Take the highway? [Y/N]");
         String option = StdIn.readString().trim().toUpperCase();
         if(option.equals("Y")){
             StdOut.println("Okay. Taking I-95...");
