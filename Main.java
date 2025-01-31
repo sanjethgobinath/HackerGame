@@ -17,6 +17,8 @@ public class Main {
     private static Clip clip;
    
     public static void main(String[] args){
+        //VIDEO PLAYER - UNCOMMENT BEFORE SUBMITTING
+        /* 
         Thread videoThread = new Thread(() -> {
             VideoPlayer.playVideo("introVid.mp4");
         });
@@ -27,6 +29,7 @@ public class Main {
             e.printStackTrace();
         }
         sleepThread(97000);
+        */
 
         String filepath = "MusicFiles/backgroundmusic1.wav";
         SoundPlayer.PlayMusic(filepath);
@@ -35,11 +38,8 @@ public class Main {
         //new test
         StdOut.println(yellowText + "Music by Sanjeth Gobinath" + reset);
         System.out.println(magentaText + italicsStart + 
-            "Welcome player." + "\n" + 
-            "\nYou are an experienced hacker working for HAKSYS Corp." + 
-            "\nYour job is to infiltrate the server room of Y-Systems Corp and steal all their data." +
-            "\nYou will encounter several obstacles; First you need to guess the password" +
-            "\n\nThe password starts with the word red, has a common animal that starts with F, and a number from 1-5." + 
+            "\nIn order to enter the building you need to guess the password." +
+            "\nThe password starts with the word red, has a common animal that starts with F, and a number from 1-5." + 
             "\nGood Luck, Comrade." +
             italicsEnd + reset);
         System.out.println();

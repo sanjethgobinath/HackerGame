@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class Player {
     public static final String CYAN = "\u001B[36m";
