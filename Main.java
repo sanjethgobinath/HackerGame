@@ -1,8 +1,11 @@
+/* 
 import java.io.File;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
+*/
 import HackerGame.*;
+
 public class Main {
     
     //special text thingies
@@ -13,9 +16,7 @@ public class Main {
     private static final String reset = "\u001B[0m";
     private static final String yellowText = "\u001B[33m";
     private static final String magentaText = "\u001B[35m";
-    
-    private static Clip clip;
-   
+       
     public static void main(String[] args){
         //VIDEO PLAYER - UNCOMMENT BEFORE SUBMITTING
         /* 

@@ -2,6 +2,7 @@ import HackerGame.*;
 
 public class PoliceChase {
     static boolean isHighway;
+    public static boolean inGarage = false;
 
     public static void policeChase(){
         SoundPlayer.stopMusic();
@@ -35,12 +36,15 @@ public class PoliceChase {
                 try {
                     if(choice == 1){  
                         StdOut.println("You've chosen: " + Player.garage.get(0));
+                        StdOut.println(C.sMods.greenText + "HP: " + C.sMods.reset + "315");
                         hondaCivic();
                 }else if(choice == 2){
                     StdOut.println("You've chosen: " + Player.garage.get(1));
+                    StdOut.println(C.sMods.greenText + "HP: " + C.sMods.reset + "271");
                     subiWrx();
                 }else if(choice == 3){
                     StdOut.println("You've chosen: " + Player.garage.get(2));
+                    StdOut.println(C.sMods.greenText + "HP: " + C.sMods.reset + "400");
                     toyoSupra();
                     
                 }else{
@@ -85,16 +89,21 @@ public class PoliceChase {
         " and there are vape fumes causing second hand lung damage");
         Player.subtractHealth();
         Player.subtractHealth();
-        StdOut.println("You need to esacpe on foot.");
+        Player.checkHealth();
+        StdOut.println("You need to escape on foot.");
+        inGarage = true;
         onFoot();
     }
 
     public static void onFoot(){
         StdOut.println("Escape via the HVAC system. Find a vent.");
-        StdOut.println("Available Vents: West, North, Elevator, Storage. [W, N, E, S]");
+        StdOut.println("Available Vents: Garage, North, Elevator, Storage. [G, N, E, S]");
         String option = StdIn.readString().trim().toUpperCase();
-        if(option.equals("W")){
+        if(option.equals("G") && inGarage){
+            StdOut.println("You've escaped through the garage.");
             
+        }else if(option.equals("G")){
+
         }else if(option.equals("N")){
 
         }else if(option.equals("E")){
