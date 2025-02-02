@@ -68,6 +68,7 @@ public class Main {
         Dialogue.interactionOne();
         Dialogue.narrationOne();
         Dialogue.interactionTwo();
+        Pickups.pickupScrewdriver();
 
     }
 

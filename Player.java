@@ -8,7 +8,7 @@ public class Player {
 
 
     
-    public static final int defaultHealth = 10;
+    public static final int defaultHealth = 5;
     public static int health = defaultHealth;
     public static ArrayList<String> inventory = new ArrayList<>();
     public static ArrayList<String> garage = new ArrayList<>();
@@ -28,7 +28,7 @@ public class Player {
         System.out.println("You have " + Player.getHealth() + " health left.");
         if (health <= 0) {
             System.out.println("Health is 0. You have been killed.");
-            System.exit(0);  // Terminate the program if health is 0
+            Game.gameOver();
         }
     }
 
@@ -76,7 +76,7 @@ public class Player {
             }
 
             // Add specific effects for known items
-            if (item.equalsIgnoreCase("Health Potion")) {
+            if (item.equalsIgnoreCase("Health Pack")) {
                 health = Math.min(health + 5, defaultHealth); // Heal player
                 System.out.println("Your health has been restored to " + health + ".");
             }

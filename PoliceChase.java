@@ -3,6 +3,8 @@ import HackerGame.*;
 public class PoliceChase {
     static boolean isHighway;
     public static boolean inGarage = false;
+    public static boolean stopLoop = false;
+    public static boolean seqOver = false;
 
     public static void policeChase(){
         SoundPlayer.stopMusic();
@@ -68,6 +70,83 @@ public class PoliceChase {
             isHighway = false;
         }
         
+        if(isHighway){
+            while(true){
+                StdOut.println("You've been spotted by a police helicopter.");
+                StdOut.println("You need to lose them.");
+                StdOut.println("Do you want to take the next exit? [Y/N]");
+                String exit = StdIn.readString().trim().toUpperCase();
+                if(exit.equals("Y")){
+                    StdOut.println("You've taken the exit.");
+                    StdOut.println("You've lost the helicopter.");
+                    seqOver = true;
+                        if (seqOver) {
+                            StdOut.println("You've successfully escaped the police.");
+                            SoundPlayer.stopMusic();
+                            String filepath = "MusicFiles/backgroundmusic1.wav";
+                            SoundPlayer.PlayMusic(filepath);
+                        }
+                    break;
+                }else if(exit.equals("N")){
+                    StdOut.println("A police car is now following you.");
+                    StdOut.println("You need to lose them.");
+                    StdOut.println("Do you want to take the next exit? [Y/N]");
+                    String exit2 = StdIn.readString().trim().toUpperCase();
+                    if(exit2.equals("Y")){
+                        StdOut.println("You've taken the exit.");
+                        StdOut.println("You've lost the police car.");
+                        seqOver = true;
+                        if (seqOver) {
+                            StdOut.println("You've successfully escaped the police.");
+                            SoundPlayer.stopMusic();
+                            String filepath = "MusicFiles/backgroundmusic1.wav";
+                            SoundPlayer.PlayMusic(filepath);
+                        }
+                        break;
+                    }else if(exit2.equals("N")){
+                        StdOut.println("Four police cars and a SWAT truck has joined the chase.");
+                        StdOut.println("Your car is struggling to keep up, but you don't have a laptop to add more power.");
+                        StdOut.println("Do you want to take the next exit? [Y/N]");
+                        String exit3 = StdIn.readString().trim().toUpperCase();
+                        if(exit3.equals("Y")){
+                            StdOut.println("You've taken the exit.");
+                            StdOut.println("You've lost them.");
+                            seqOver = true;
+                            if (seqOver) {
+                                StdOut.println("You've successfully escaped the police.");
+                                SoundPlayer.stopMusic();
+                                String filepath = "MusicFiles/backgroundmusic1.wav";
+                                SoundPlayer.PlayMusic(filepath);
+                            }
+                            break;
+                        }else if(exit3.equals("N")){
+                            StdOut.println("12 police cars, 5 SWAT trucks, and a helicopter have joined the chase.");
+                            StdOut.println("You need to lose them.");
+                            StdOut.println("EXIT NOW. [Y/N]");
+                            String exit4 = StdIn.readString().trim().toUpperCase();
+                            if(exit4.equals("Y")){
+                                StdOut.println("You've taken the exit.");
+                                StdOut.println("You've lost them.");
+                                seqOver = true;
+                            if (seqOver) {
+                                StdOut.println("You've successfully escaped the police.");
+                                SoundPlayer.stopMusic();
+                                String filepath = "MusicFiles/backgroundmusic1.wav";
+                                SoundPlayer.PlayMusic(filepath);
+                            }
+                            break;  
+                            }else if(exit4.equals("N")){
+                                StdOut.println("You've been caught.");
+                                Game.gameOver();
+                                Player.subtractHealth();
+                                Player.checkHealth();
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 
     public static void toyoSupra(){
@@ -81,7 +160,84 @@ public class PoliceChase {
             isHighway = false;
         }
 
-
+        
+        if(isHighway){
+            while(true){
+                StdOut.println("You've been spotted by a police helicopter.");
+                StdOut.println("You need to lose them.");
+                StdOut.println("Do you want to take the next exit? [Y/N]");
+                String exit = StdIn.readString().trim().toUpperCase();
+                if(exit.equals("Y")){
+                    StdOut.println("You've taken the exit.");
+                    StdOut.println("You've lost the helicopter.");
+                    seqOver = true;
+                        if (seqOver) {
+                            StdOut.println("You've successfully escaped the police.");
+                            SoundPlayer.stopMusic();
+                            String filepath = "MusicFiles/backgroundmusic1.wav";
+                            SoundPlayer.PlayMusic(filepath);
+                        }
+                    break;
+                }else if(exit.equals("N")){
+                    StdOut.println("A police car is now following you.");
+                    StdOut.println("You need to lose them.");
+                    StdOut.println("Do you want to take the next exit? [Y/N]");
+                    String exit2 = StdIn.readString().trim().toUpperCase();
+                    if(exit2.equals("Y")){
+                        StdOut.println("You've taken the exit.");
+                        StdOut.println("You've lost the police car.");
+                        seqOver = true;
+                        if (seqOver) {
+                            StdOut.println("You've successfully escaped the police.");
+                            SoundPlayer.stopMusic();
+                            String filepath = "MusicFiles/backgroundmusic1.wav";
+                            SoundPlayer.PlayMusic(filepath);
+                        }
+                        break;
+                    }else if(exit2.equals("N")){
+                        StdOut.println("Four police cars and a SWAT truck has joined the chase.");
+                        StdOut.println("You need to lose them.");
+                        StdOut.println("Do you want to take the next exit? [Y/N]");
+                        String exit3 = StdIn.readString().trim().toUpperCase();
+                        if(exit3.equals("Y")){
+                            StdOut.println("You've taken the exit.");
+                            StdOut.println("You've lost them.");
+                            seqOver = true;
+                            if (seqOver) {
+                                StdOut.println("You've successfully escaped the police.");
+                                SoundPlayer.stopMusic();
+                                String filepath = "MusicFiles/backgroundmusic1.wav";
+                                SoundPlayer.PlayMusic(filepath);
+                            }
+                            break;
+                        }else if(exit3.equals("N")){
+                            StdOut.println("12 police cars, 5 SWAT trucks, and a helicopter have joined the chase.");
+                            StdOut.println("You need to lose them.");
+                            StdOut.println("EXIT NOW. [Y/N]");
+                            String exit4 = StdIn.readString().trim().toUpperCase();
+                            if(exit4.equals("Y")){
+                                StdOut.println("You've taken the exit.");
+                                StdOut.println("You've lost them.");
+                                seqOver = true;
+                                if (seqOver) {
+                                    StdOut.println("You've successfully escaped the police.");
+                                    SoundPlayer.stopMusic();
+                                    String filepath = "MusicFiles/backgroundmusic1.wav";
+                                    SoundPlayer.PlayMusic(filepath);
+                                }
+                                break;  
+                            }else if(exit4.equals("N")){
+                                StdOut.println("You've been caught.");
+                                Game.gameOver();
+                                Player.subtractHealth();
+                                Player.checkHealth();
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 
     public static void subiWrx(){
@@ -95,21 +251,89 @@ public class PoliceChase {
         onFoot();
     }
 
-    public static void onFoot(){
-        StdOut.println("Escape via the HVAC system. Find a vent.");
-        StdOut.println("Available Vents: Garage, North, Elevator, Storage. [G, N, E, S]");
+    public static void onFoot() {
+        if (inGarage) {
+            StdOut.println("Escape via the HVAC system. Find a vent.");
+            StdOut.println("Available Vents: Garage, Elevator. [G, E]");
+            StdOut.println("Hint: The garage vent will be a faster escape.");
+        } else {
+            StdOut.println("Escape via the HVAC system. Find a vent.");
+            StdOut.println("Available Vents: Storage, North, Elevator. [S, N, E]");
+        }
+
         String option = StdIn.readString().trim().toUpperCase();
-        if(option.equals("G") && inGarage){
-            StdOut.println("You've escaped through the garage.");
-            
-        }else if(option.equals("G")){
+        while(true){
+            if (option.equals("G") && inGarage) {
+                StdOut.println("You've escaped through the garage.");
+                break;
+            } else if (option.equals("G")) {
+                StdOut.println("Vent is too far away. Try again.");
+            } else if (option.equals("N") && inGarage) {
+                StdOut.println("Vent is too far away. Try again.");
+            } else if (option.equals("N")) {
+                StdOut.println("You've chosen the north vent.");
+                break;
+            } else if (option.equals("S") && inGarage) {
+                StdOut.println("Vent is too far away. Try again.");
+            } else if (option.equals("S")) {
+                StdOut.println("You've chosen the south vent.");
+                break;
+            } else if (option.equals("E") && inGarage) {
+                StdOut.println("You've chosen the elevator vent.");
+                break;
+            } else if (option.equals("E")) {
+                StdOut.println("You've chosen the elevator vent.");
+                break;
+            }else {
+                StdOut.println("Invalid option chosen.");
+            }
+        }
 
-        }else if(option.equals("N")){
+        StdOut.println("Vent successful.");
+        try {
+            Thread.sleep(1000);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
+        Thread loopThread = new Thread(() -> {
+            for (int i = 1000; i > 0; i -= 100) {
+                if(stopLoop){
+                    break;
+                }
+                StdOut.print("\rPolice is " + i + " feet away.");
+                try {
+                    Thread.sleep(400);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+            StdOut.println();
+        });
+        loopThread.start();
+        
+        StdOut.println("Quick. Take cover. [C]");
+        String input = StdIn.readString().trim().toUpperCase();
+        if (input.equals("C")) {
+            StdOut.println("You took cover. Police has passed.");
+        } else {
+            StdOut.println("Invalid input.");
+        }
 
-        }else if(option.equals("E")){
+        stopLoop = true;
 
-        }else if(option.equals("S")){
+        try {
+            loopThread.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
+        seqOver = true;
+        if (seqOver) {
+            StdOut.println("You've successfully escaped the police.");
+            SoundPlayer.stopMusic();
+            String filepath = "MusicFiles/backgroundmusic1.wav";
+            SoundPlayer.PlayMusic(filepath);
         }
     }
 }
