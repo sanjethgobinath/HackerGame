@@ -146,6 +146,52 @@ public class PoliceChase {
                     }
                 }
             }
+        }else{
+            StdOut.println("There are going to be hidden police cars on the route.");
+            StdOut.println("You must be careful.");
+            try {
+                Thread.sleep(1000);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            StdOut.println("You've been spotted by a police car. What do you want to do?");
+            StdOut.println("1. Speed up");
+            StdOut.println("2. Take a detour");
+            StdOut.println("3. Hide in a nearby alley");
+
+            int choice = StdIn.readInt();
+            switch (choice) {
+                case 1:
+                    StdOut.println("You speed up, but the police car is still on your tail.");
+                    // Add more logic here if needed
+                    break;
+                case 2:
+                    StdOut.println("You take a detour and manage to lose the police car.");
+                    seqOver = true;
+                    if (seqOver) {
+                        StdOut.println("You've successfully escaped the police.");
+                        SoundPlayer.stopMusic();
+                        String filepath = "MusicFiles/backgroundmusic1.wav";
+                        SoundPlayer.PlayMusic(filepath);
+                    }
+                    break;
+                case 3:
+                    StdOut.println("You hide in a nearby alley and the police car passes by.");
+                    seqOver = true;
+                    if (seqOver) {
+                        StdOut.println("You've successfully escaped the police.");
+                        SoundPlayer.stopMusic();
+                        String filepath = "MusicFiles/backgroundmusic1.wav";
+                        SoundPlayer.PlayMusic(filepath);
+                    }
+                    break;
+                default:
+                    StdOut.println("Invalid choice. You've been caught.");
+                    Game.gameOver();
+                    Player.subtractHealth();
+                    Player.checkHealth();
+                    break;
+            }
         }
     }
 
@@ -237,6 +283,52 @@ public class PoliceChase {
                     }
                 }
             }
+        } else{
+            StdOut.println("There are going to be hidden police cars on the route.");
+            StdOut.println("You must be careful.");
+            try {
+                Thread.sleep(1000);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            StdOut.println("You've been spotted by a police car. What do you want to do?");
+            StdOut.println("1. Activate nitrous");
+            StdOut.println("2. Take a detour");
+            StdOut.println("3. Hide in a nearby alley");
+
+            int choice = StdIn.readInt();
+            switch (choice) {
+                case 1:
+                    StdOut.println("You activate nitrous and gain 150HP.");
+                    // Add more logic here if needed
+                    break;
+                case 2:
+                    StdOut.println("You take a detour and manage to lose the police car.");
+                    seqOver = true;
+                    if (seqOver) {
+                        StdOut.println("You've successfully escaped the police.");
+                        SoundPlayer.stopMusic();
+                        String filepath = "MusicFiles/backgroundmusic1.wav";
+                        SoundPlayer.PlayMusic(filepath);
+                    }
+                    break;
+                case 3:
+                    StdOut.println("You hide in a nearby alley and the police car passes by.");
+                    seqOver = true;
+                    if (seqOver) {
+                        StdOut.println("You've successfully escaped the police.");
+                        SoundPlayer.stopMusic();
+                        String filepath = "MusicFiles/backgroundmusic1.wav";
+                        SoundPlayer.PlayMusic(filepath);
+                    }
+                    break;
+                default:
+                    StdOut.println("Invalid choice. You've been caught.");
+                    Game.gameOver();
+                    Player.subtractHealth();
+                    Player.checkHealth();
+                    break;
+            }
         }
     }
 
@@ -256,78 +348,83 @@ public class PoliceChase {
             StdOut.println("Escape via the HVAC system. Find a vent.");
             StdOut.println("Available Vents: Garage, Elevator. [G, E]");
             StdOut.println("Hint: The garage vent will be a faster escape.");
+
         } else {
             StdOut.println("Escape via the HVAC system. Find a vent.");
             StdOut.println("Available Vents: Storage, North, Elevator. [S, N, E]");
         }
 
-        String option = StdIn.readString().trim().toUpperCase();
-        while(true){
-            if (option.equals("G") && inGarage) {
-                StdOut.println("You've escaped through the garage.");
-                break;
-            } else if (option.equals("G")) {
-                StdOut.println("Vent is too far away. Try again.");
-            } else if (option.equals("N") && inGarage) {
-                StdOut.println("Vent is too far away. Try again.");
-            } else if (option.equals("N")) {
-                StdOut.println("You've chosen the north vent.");
-                break;
-            } else if (option.equals("S") && inGarage) {
-                StdOut.println("Vent is too far away. Try again.");
-            } else if (option.equals("S")) {
-                StdOut.println("You've chosen the south vent.");
-                break;
-            } else if (option.equals("E") && inGarage) {
-                StdOut.println("You've chosen the elevator vent.");
-                break;
-            } else if (option.equals("E")) {
-                StdOut.println("You've chosen the elevator vent.");
-                break;
-            }else {
-                StdOut.println("Invalid option chosen.");
-            }
-        }
-
-        StdOut.println("Vent successful.");
-        try {
-            Thread.sleep(1000);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        
-        Thread loopThread = new Thread(() -> {
-            for (int i = 1000; i > 0; i -= 100) {
-                if(stopLoop){
+        if (Player.hasItem("Screwdriver")) {
+            String option = StdIn.readString().trim().toUpperCase();
+            while(true){
+                if (option.equals("G") && inGarage) {
+                    StdOut.println("You've escaped through the garage.");
                     break;
-                }
-                StdOut.print("\rPolice is " + i + " feet away.");
-                try {
-                    Thread.sleep(400);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
+                } else if (option.equals("G")) {
+                    StdOut.println("Vent is too far away. Try again.");
+                } else if (option.equals("N") && inGarage) {
+                    StdOut.println("Vent is too far away. Try again.");
+                } else if (option.equals("N")) {
+                    StdOut.println("You've chosen the north vent.");
+                    break;
+                } else if (option.equals("S") && inGarage) {
+                    StdOut.println("Vent is too far away. Try again.");
+                } else if (option.equals("S")) {
+                    StdOut.println("You've chosen the south vent.");
+                    break;
+                } else if (option.equals("E") && inGarage) {
+                    StdOut.println("You've chosen the elevator vent.");
+                    break;
+                } else if (option.equals("E")) {
+                    StdOut.println("You've chosen the elevator vent.");
+                    break;
+                }else {
+                    StdOut.println("Invalid option chosen.");
                 }
             }
-            StdOut.println();
-        });
-        loopThread.start();
+
+            StdOut.println("Vent successful.");
+            try {
+                Thread.sleep(1000);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            
+            Thread loopThread = new Thread(() -> {
+                for (int i = 1000; i > 0; i -= 100) {
+                    if(stopLoop){
+                        break;
+                    }
+                    StdOut.print("\rPolice is " + i + " feet away.");
+                    try {
+                        Thread.sleep(400);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+                StdOut.println();
+            });
+            loopThread.start();
+            
+            StdOut.println("Quick. Take cover. [C]");
+            String input = StdIn.readString().trim().toUpperCase();
+            if (input.equals("C")) {
+                StdOut.println("You took cover. Police has passed.");
+            } else {
+                StdOut.println("Invalid input.");
+            }
+
+            stopLoop = true;
+
+            try {
+                loopThread.join();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }else{
+            StdOut.println("You need a screwdriver to open the vent. Find another escape.");
+        }
         
-        StdOut.println("Quick. Take cover. [C]");
-        String input = StdIn.readString().trim().toUpperCase();
-        if (input.equals("C")) {
-            StdOut.println("You took cover. Police has passed.");
-        } else {
-            StdOut.println("Invalid input.");
-        }
-
-        stopLoop = true;
-
-        try {
-            loopThread.join();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
         seqOver = true;
         if (seqOver) {
             StdOut.println("You've successfully escaped the police.");

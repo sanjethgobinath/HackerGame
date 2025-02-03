@@ -86,6 +86,14 @@ public class Player {
         }
     }
 
+    public static boolean hasItem(String item){
+        if(inventory.contains(item)){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
     public static void addSus(){
         sus++;
         if(sus == 1){
