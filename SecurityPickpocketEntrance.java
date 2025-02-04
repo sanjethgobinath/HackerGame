@@ -20,7 +20,7 @@ public class SecurityPickpocketEntrance {
                         System.out.println("Picked up keys for a " + greenText + "Honda Civic Type-R." + reset);
                         Player.garage.add("Honda Civic Type-R (2022)");
                         System.out.println("Obtained a Glock 19.");
-                        Player.addItem("Glock 19");
+                        Player.addGun("Glock 19");
                         break;
                     } else {
                         System.out.println(redText + "Missed the opportunity to pickpocket." + reset);

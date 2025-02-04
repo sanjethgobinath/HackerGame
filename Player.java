@@ -12,6 +12,7 @@ public class Player {
     public static int health = defaultHealth;
     public static ArrayList<String> inventory = new ArrayList<>();
     public static ArrayList<String> garage = new ArrayList<>();
+    public static ArrayList<String> guns = new ArrayList<>();
     //possible cars- Honda Civic Type-R (2022) Mitsubishi Lancer Evo X (2015) Subaru WRX (2025) Toyota GR Supra (2025)
     public static int sus = 0;
     
@@ -94,6 +95,13 @@ public class Player {
         }
     }
 
+    public static void addGun(String gun){
+        guns.add(gun);
+        System.out.println(greenText + gun + RESET + " has been added to your arsenal.");
+    }
+    
+    // SOCIAL INTERACTIONS
+    
     public static void addSus(){
         sus++;
         if(sus == 1){

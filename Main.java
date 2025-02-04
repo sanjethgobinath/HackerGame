@@ -69,6 +69,7 @@ public class Main {
         Dialogue.narrationOne();
         Dialogue.interactionTwo();
         Pickups.pickupScrewdriver();
+        DexterityPuzzle.dexPuzzle();
 
     }
 

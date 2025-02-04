@@ -162,8 +162,18 @@ public class PoliceChase {
             int choice = StdIn.readInt();
             switch (choice) {
                 case 1:
-                    StdOut.println("You speed up, but the police car is still on your tail.");
-                    // Add more logic here if needed
+                    StdOut.println("You speed up, but there was an oil spill, leading you to spin out.");
+                    StdOut.println("You have crashed.");
+                    StdOut.println("You see an AR-15 on the ground from a previous robbery.");
+                    StdOut.println("Do you want to pick it up? [Y/N]");
+                    String ar15 = StdIn.readString().trim().toUpperCase();
+                    if(ar15.equals("Y")){
+                        StdOut.println("You've picked up the AR-15.");
+                        Player.addGun("AR-15");
+                    }else if(ar15.equals("N")){
+                        StdOut.println("You've left the AR-15.");
+                    }
+                    
                     break;
                 case 2:
                     StdOut.println("You take a detour and manage to lose the police car.");
@@ -300,10 +310,7 @@ public class PoliceChase {
             switch (choice) {
                 case 1:
                     StdOut.println("You activate nitrous and gain 150HP.");
-                    // Add more logic here if needed
-                    break;
-                case 2:
-                    StdOut.println("You take a detour and manage to lose the police car.");
+                    StdOut.println("Burned some rubber but lost the police.");
                     seqOver = true;
                     if (seqOver) {
                         StdOut.println("You've successfully escaped the police.");
@@ -311,6 +318,10 @@ public class PoliceChase {
                         String filepath = "MusicFiles/backgroundmusic1.wav";
                         SoundPlayer.PlayMusic(filepath);
                     }
+                    break;
+                case 2:
+                    StdOut.println("You take a detour, however, you fell for the police's trap.");
+                    StdOut.println("More police cars have joined the chase.");
                     break;
                 case 3:
                     StdOut.println("You hide in a nearby alley and the police car passes by.");
