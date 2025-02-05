@@ -137,7 +137,7 @@ public class PoliceChase {
                             break;  
                             }else if(exit4.equals("N")){
                                 StdOut.println("You've been caught.");
-                                Game.gameOver();
+                                GameManager.gameOver();
                                 Player.subtractHealth();
                                 Player.checkHealth();
                                 break;
@@ -148,7 +148,7 @@ public class PoliceChase {
             }
         }else{
             StdOut.println("There are going to be hidden police cars on the route.");
-            StdOut.println("You must be careful.");
+            StdOut.println("You must be careful...");
             try {
                 Thread.sleep(1000);
             } catch (Exception e) {
@@ -197,10 +197,14 @@ public class PoliceChase {
                     break;
                 default:
                     StdOut.println("Invalid choice. You've been caught.");
-                    Game.gameOver();
+                    GameManager.gameOver();
                     Player.subtractHealth();
                     Player.checkHealth();
                     break;
+            }
+
+            if(choice ==1){
+                StdOut.println("Police are shooting at you. Choose a weapon.");
             }
         }
     }
@@ -284,7 +288,7 @@ public class PoliceChase {
                                 break;  
                             }else if(exit4.equals("N")){
                                 StdOut.println("You've been caught.");
-                                Game.gameOver();
+                                GameManager.gameOver();
                                 Player.subtractHealth();
                                 Player.checkHealth();
                                 break;
@@ -335,7 +339,7 @@ public class PoliceChase {
                     break;
                 default:
                     StdOut.println("Invalid choice. You've been caught.");
-                    Game.gameOver();
+                    GameManager.gameOver();
                     Player.subtractHealth();
                     Player.checkHealth();
                     break;

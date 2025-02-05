@@ -46,6 +46,33 @@ public class DexterityPuzzle {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
+            
+            Thread countdownThread = new Thread(() -> {
+                for (int i = 10; i > 0; i--) {
+                    if (latch.getCount() == 0) {
+                        break;
+                    }
+                    StdOut.print("\rYou have " + i + " seconds left.");
+                    try {
+                        Thread.sleep(1000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+                StdOut.println();
+            });
+
+            countdownThread.start();
+
+            try {
+                if (!latch.await(10, TimeUnit.SECONDS)) {
+                    caught = true;
+                    StdOut.println("Time's up! The janitor has caught you with contrabands!");
+                    break;
+                }
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
 
             String item = userInput[0];
 

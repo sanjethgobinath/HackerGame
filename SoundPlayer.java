@@ -25,6 +25,24 @@ public class SoundPlayer {
         }).start();
     }
 
+    public static void PlayOnce(String location) {
+        new Thread(() -> {
+            try {
+                File musicPath = new File(location);
+                if (musicPath.exists()) {
+                    AudioInputStream audioInput = AudioSystem.getAudioInputStream(musicPath);
+                    clip = AudioSystem.getClip();
+                    clip.open(audioInput);
+                    Thread.sleep(Long.MAX_VALUE); // Keep thread alive to play music
+                } else {
+                    System.out.println("Cannot find file: " + location);
+                }
+            } catch (Exception e) {
+                System.out.println("Error playing music: " + e.getMessage());
+            }
+        }).start();
+    }
+
     public static void stopMusic() {
         if (clip != null && clip.isRunning()) {
             clip.stop();

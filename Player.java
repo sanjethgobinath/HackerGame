@@ -29,7 +29,7 @@ public class Player {
         System.out.println("You have " + Player.getHealth() + " health left.");
         if (health <= 0) {
             System.out.println("Health is 0. You have been killed.");
-            Game.gameOver();
+            GameManager.gameOver();
         }
     }
 
