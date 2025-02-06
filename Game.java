@@ -57,35 +57,20 @@ public class Game {
         //Typewriter effect
         for(int i = 0; i < intro.length(); i++){
             System.out.print(intro.charAt(i));
-            sleepThread(50);
+            GameManager.sleepThread(50);
         }
         
         System.out.println(); //Enter next line        
-        PasswordPuzzle.findPassword();
-        sleepThread(1000);
-    
-        SecurityPickpocketEntrance.securityPickpocketEntrance();
-        Dialogue.interactionOne();
-        Dialogue.narrationOne();
-        Dialogue.interactionTwo();
+        GameManager.findPassword();
+        GameManager.sleepThread(1000);
+        GameManager.securityPickpocketEntrance();
+        GameManager.interactionOne();
+        GameManager.narrationOne();
+        GameManager.interactionTwo();
         Pickups.pickupScrewdriver();
-        DexterityPuzzle.dexPuzzle();
-        Dialogue.narrationTwo();
-        
-
-    }
-
-    public static void sleepThread(int millis){
-        try{
-            Thread.sleep(millis);
-        } catch (InterruptedException e){
-            e.printStackTrace();
-        }
-    }
-
-    
-    
-    
+        GameManager.dexterityPuzzle();
+        GameManager.narrationTwo();
+    } 
 }
 
 

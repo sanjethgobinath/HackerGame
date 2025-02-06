@@ -137,8 +137,12 @@ public class Player {
             } catch (InterruptedException e){
                 e.printStackTrace();
             }
-            PoliceChase.policeChase();
+            GameManager.policeChase();
         }
+    }
+
+    public static int getSus(){
+        return sus;
     }
     
 }

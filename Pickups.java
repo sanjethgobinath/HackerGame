@@ -6,7 +6,7 @@ public class Pickups {
         while(true){
             String choice = StdIn.readString().trim().toUpperCase();
             if(choice.equals("Y")){
-                StdOut.println(C.sMods.greenText + "Screwdriver " + C.sMods.reset + "Obtained.");
+                StdOut.println(Char.sMods.greenText + "Screwdriver " + Char.sMods.reset + "Obtained.");
                 Player.addItem("Screwdriver");
                 break;
             }else if(choice.equals("N")){
@@ -36,7 +36,7 @@ public class Pickups {
         while(true){
             String choice = StdIn.readString().trim().toUpperCase();
             if(choice.equals("Y")){
-                StdOut.println(C.sMods.greenText + "Health Pack " + C.sMods.reset + "Obtained.");
+                StdOut.println(Char.sMods.greenText + "Health Pack " + Char.sMods.reset + "Obtained.");
                 Player.addItem("Health Pack");
                 break;
             }else if(choice.equals("N")){
