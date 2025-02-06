@@ -21,6 +21,11 @@ public class Player {
         return health;
     }
 
+    public static void isDead(){
+        System.out.println("You have died.");
+        GameManager.gameOver();
+    }
+
     public static void resetHealth(){
         health = defaultHealth;
     }
