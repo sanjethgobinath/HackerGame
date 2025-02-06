@@ -100,6 +100,17 @@ public class Player {
         System.out.println(greenText + gun + RESET + " has been added to your arsenal.");
     }
     
+    public static void viewArsenal(){
+        if (guns.isEmpty()) {
+            System.out.println("Your inventory is empty.");
+        } else {
+            System.out.println("Your inventory contains:");
+            for(int i = 0; i < guns.size(); i++){
+                System.out.println(CYAN + guns.get(i) + RESET);
+            }
+            
+        }
+    }
     // SOCIAL INTERACTIONS
     
     public static void addSus(){

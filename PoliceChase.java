@@ -60,6 +60,7 @@ public class PoliceChase {
     }
 
     public static void hondaCivic(){
+        int gunChoice = 1;
         StdOut.println("Take the highway? [Y/N]");
         String option = StdIn.readString().trim().toUpperCase();
         if(option.equals("Y")){
@@ -163,6 +164,9 @@ public class PoliceChase {
             switch (choice) {
                 case 1:
                     StdOut.println("You speed up, but there was an oil spill, leading you to spin out.");
+                    Player.subtractHealth();
+                    Player.subtractHealth();
+                    Player.checkHealth();
                     StdOut.println("You have crashed.");
                     StdOut.println("You see an AR-15 on the ground from a previous robbery.");
                     StdOut.println("Do you want to pick it up? [Y/N]");
@@ -203,8 +207,81 @@ public class PoliceChase {
                     break;
             }
 
-            if(choice ==1){
+            if(choice == 1){
                 StdOut.println("Police are shooting at you. Choose a weapon.");
+                for(int i = 0; i < Player.guns.size(); i++){
+                    System.out.print(gunChoice + ". ");
+                    gunChoice++;
+                    for(int j = 0; j < Player.guns.get(i).length(); j++){
+                        System.out.print(Player.guns.get(i).charAt(j));
+                        try{
+                            Thread.sleep(50);
+                        } catch (InterruptedException e){
+                            e.printStackTrace();
+                        }
+                    }
+                    System.out.println();
+                }
+
+                int gunOption = StdIn.readInt();
+                try {
+                    StdOut.println("You have chosen: " + Player.guns.get(gunOption - 1));
+                } catch (IndexOutOfBoundsException e) {
+                    StdOut.println("Gun doesn't exist");
+                }
+
+                if(Player.guns.get(gunOption - 1).equals("AR-15")){
+                    int magSize = 10;
+                    int chance = (int)(Math.random()*25) + 1;
+                    boolean hasAmmo = true;
+                    StdOut.println("You have " + magSize + "ammo left.");
+
+                    StdOut.println("Press E to shoot.");
+                    while(true){
+                        String isShooting = StdIn.readString().trim().toUpperCase();
+                        if(isShooting.equals("E")){
+                            if(magSize < 0){
+                                StdOut.println("You have run out of ammo.");
+                                StdOut.println("You hide behind a building.");
+                                hasAmmo = false;
+                                break;
+                            }else{
+                                magSize--;
+                                StdOut.println("You have " + magSize + "ammo left.");
+                                try {
+                                    Thread.sleep(50);
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                }
+                            }
+                            if(chance % 5 == 0){
+                                StdOut.println("You've eliminated the police.");
+                                break;
+                            }
+                        }
+
+                        if(!hasAmmo){
+                            StdOut.println("You decide to test your fate and roll a pair of dice.");
+                            StdOut.println("If you roll a number that is divisible by 3, you make a run for it.");
+                            StdOut.println("Otherwise, you will surrender.");
+                            int dice1 = (int)(Math.random()*6) + 1;
+                            int dice2 = (int)(Math.random()*6) + 1;
+                            int total = dice1 + dice2;
+                            StdOut.println("You rolled a " + total + ".");
+                            if(total % 3 == 0){
+                                StdOut.println("You make a run for it and escape.");
+                                seqOver = true;
+                                if (seqOver) {
+                                    StdOut.println("You've successfully escaped the police.");
+                                    SoundPlayer.stopMusic();
+                                    String filepath = "MusicFiles/backgroundmusic1.wav";
+                                    SoundPlayer.PlayMusic(filepath);
+                                }
+                                break;
+                            }
+                        }
+                    }
+                }
             }
         }
     }

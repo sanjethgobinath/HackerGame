@@ -40,7 +40,7 @@ public class DexterityPuzzle {
             try {
                 if (!latch.await(10, TimeUnit.SECONDS)) {
                     caught = true;
-                    StdOut.println("Time's up! The janitor has caught you with contrabands!");
+                    StdOut.println("Time's up. The janitor has caught you with contrabands.");
                     break;
                 }
             } catch (InterruptedException e) {
@@ -67,7 +67,7 @@ public class DexterityPuzzle {
             try {
                 if (!latch.await(10, TimeUnit.SECONDS)) {
                     caught = true;
-                    StdOut.println("Time's up! The janitor has caught you with contrabands!");
+                    StdOut.println("Time's up. The janitor has caught you with contrabands.");
                     break;
                 }
             } catch (InterruptedException e) {
@@ -87,14 +87,14 @@ public class DexterityPuzzle {
             // Randomly determine if the janitor catches the user
             if (random.nextInt(10) < 2) { // 20% chance of getting caught each round
                 caught = true;
-                StdOut.println("The janitor has caught you with contrabands!");
+                StdOut.println("The janitor has caught you with contrabands.");
             } else {
                 StdOut.println("Items left on the cart: " + contrabands);
             }
         }
 
         if (!caught && contrabands.isEmpty()) {
-            StdOut.println("You have successfully hidden all the items!");
+            StdOut.println("You have successfully hidden all the items.");
         }
 
         StdOut.println("Hidden items: " + hiddenItems);
