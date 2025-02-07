@@ -1,11 +1,7 @@
 package HackerGame;
-
 import java.util.*;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
-
-import HackerGame.Char.sMods;
-
 public class GameManager {
     //POLICE CHASE
     static boolean isHighway;
@@ -16,25 +12,42 @@ public class GameManager {
     //DIALOGUE
     public static boolean janitorHelp = false;
 
+    //ASCII ART
+
     public static void gameOver(){
         System.out.println("Game Over");
         System.exit(0);
     }
     
     public static void winGame(){
+        char[][] ascii = ReaderClass.getTxt("HackerGame/ASCIIText.txt");
         SoundPlayer.stopMusic();
         String filepath = "MusicFiles/endcredits.wav";
         SoundPlayer.PlayOnce(filepath);
-        String outro = Char.sMods.magentaText + " A Game by: " + Char.sMods.reset + 
+        String outro = Char.sMods.magentaText + "A Game by: " + Char.sMods.reset + 
         "Sanjeth, Wyelin, Jeffery, Yash" + Char.sMods.magentaText + "\nMusic by: " + Char.sMods.reset + 
         "Sanjeth Gobinath" + "\n100 please Mr. Fagella";
         for(int i = 0; i < outro.length(); i++){
             System.out.print(outro.charAt(i));
             try{
-                Thread.sleep(50);
+                int random = 50 + (int)(Math.random() * 60);
+                Thread.sleep(random);
             } catch (InterruptedException e){
                 e.printStackTrace();
             }
+        }
+        StdOut.println();
+        ReaderClass.print2DArr(ascii);
+        StdOut.println();
+        StdOut.println();
+
+        if(SoundPlayer.isOver){
+            StdOut.println();
+            StdOut.println("Press any key, then enter to exit. (but please stay to listen to the song)"); 
+            StdIn.readString();
+            System.exit(0);
+            
+            
         }
     }
     
@@ -1015,18 +1028,18 @@ public class GameManager {
     }   
     
     public static void narrationTwo(){
-        StdOut.println(Char.sMods.magentaText + "The entrance to the server are requires a keycard and a retinal scan." + Char.sMods.reset);
-        sleepThread(1000);
+        StdOut.println(Char.sMods.magentaText + Char.sMods.italicsStart + "The entrance to the server are requires a keycard and a retinal scan." + Char.sMods.reset);
+        sleepThread(1500);
         if(Player.hasItem("Keycard")){
             StdOut.println(Char.sMods.magentaText + "You have a keycard. You need to find a way to spoof the retinal scan." + Char.sMods.reset);
-            sleepThread(1000);
+            sleepThread(1500);
             interactionThreeA();
         }else if(Player.hasItem("Screwdriver")){
             StdOut.println(Char.sMods.magentaText + "You don't have a keycard, but you may be able to use a screwdriver bypass it" + Char.sMods.reset);
             sleepThread(1000);
             interactionThreeB();
         }else{
-            StdOut.println(Char.sMods.magentaText + "You don't have a keycard or a screwdriver. You need to find a way to get past the entrance." + Char.sMods.reset);
+            StdOut.println(Char.sMods.magentaText + "You don't have a keycard or a screwdriver. You need to find a way to get past the entrance." + Char.sMods.italicsEnd + Char.sMods.reset);
             sleepThread(1000);
             interactionThreeC();
         }
@@ -1298,3 +1311,6 @@ public class GameManager {
         }
     }
 }
+
+
+

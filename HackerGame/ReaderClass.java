@@ -1,15 +1,14 @@
 package HackerGame;
 import java.io.*;
-import java.nio.file.*;
+//import java.nio.file.*;
 import java.util.*;
-import java.util.stream.*;
+//import java.util.stream.*;
 
 public class ReaderClass {
     public static List<String> parseTxt(String name) {
         try {
             List<String> output = new ArrayList<>();
-            Scanner fileIn = new Scanner(new File(name + ".txt"));
-
+            Scanner fileIn = new Scanner(new File(name));
             while (fileIn.hasNext()){
                 String lineIn = fileIn.nextLine(); 
                 output.add(lineIn);

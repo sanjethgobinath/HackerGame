@@ -1,21 +1,11 @@
 package HackerGame;
 
 public class Game {
-    
-    //special text thingies
-    private static final String redText = "\u001B[31m";
-    private static final String greenText = "\u001B[32m";
-    private static final String italicsStart = "\033[3m";
-    private static final String italicsEnd = "\033[0m";
-    private static final String reset = "\u001B[0m";
-    private static final String yellowText = "\u001B[33m";
-    private static final String magentaText = "\u001B[35m";
-       
-    public static void main(String[] args){
+        public static void main(String[] args){
         //VIDEO PLAYER - UNCOMMENT BEFORE SUBMITTING
-        
+        /* 
         Thread videoThread = new Thread(() -> {
-            VideoPlayer.playVideo("introVid.mp4");
+            VideoPlayer.playVideo("HackerGame/introVid.mp4");
         });
         videoThread.start();
         try {
@@ -23,19 +13,21 @@ public class Game {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        GameManager.sleepThread(97000);
-        
+        GameManager.sleepThread(97200); //waiting for 97000 second video with 200ms buffer
+        */
         String filepath = "MusicFiles/backgroundmusic1.wav";
         SoundPlayer.PlayMusic(filepath);
         // this is a test from somwhere online
         //Instructions
         //new test
-        StdOut.println(yellowText + "Music by Sanjeth Gobinath" + reset);
-        System.out.println(magentaText + italicsStart + 
+        StdOut.println(Char.sMods.yellowText + "Music by Sanjeth Gobinath" + Char.sMods.reset);
+        System.out.println(Char.sMods.magentaText + Char.sMods.italicsStart + 
             "\nIn order to enter the building you need to guess the password." +
-            "\nThe password starts with the word red, has a common animal that starts with F, and a number from 1-5." + 
+            "\nThe password starts with the word " + Char.sMods.redText + "red, "+
+            Char.sMods.reset + Char.sMods.magentaText +
+            "has a common animal that starts with F, and a number from 1-5." + 
             "\nGood Luck, Comrade." +
-            italicsEnd + reset);
+            Char.sMods.italicsEnd + Char.sMods.reset);
         System.out.println();
         
         try{
@@ -44,8 +36,8 @@ public class Game {
             e.printStackTrace();
         }
         
-        String intro = greenText + "Hello. Welcome to Y-Systems."  + 
-            "\nPlease enter your password." + reset;
+        String intro = Char.sMods.greenText + "Hello. Welcome to Y-Systems."  + 
+            "\nPlease enter your password." + Char.sMods.reset;
         
         //Typewriter effect
         for(int i = 0; i < intro.length(); i++){
@@ -54,6 +46,8 @@ public class Game {
         }
         
         System.out.println(); //Enter next line        
+        
+        GameManager.winGame();
         GameManager.findPassword();
         GameManager.sleepThread(1000);
         GameManager.securityPickpocketEntrance();
