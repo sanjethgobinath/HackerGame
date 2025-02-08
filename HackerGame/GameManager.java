@@ -12,21 +12,46 @@ public class GameManager {
     //DIALOGUE
     public static boolean janitorHelp = false;
 
-    //ASCII ART
-
     public static void gameOver(){
         System.out.println("Game Over");
         System.exit(0);
     }
     
     public static void winGame(){
-        char[][] ascii = ReaderClass.getTxt("HackerGame/ASCIIText.txt");
+        String totalGuns;
+        String totalGarage;
+        String totalInventory;
+        
+        if (Player.guns.size() == 0) {
+            totalGuns = "No Guns";
+        } else {
+            totalGuns = String.join(", ", Player.guns);
+        }
+        
+        if (Player.garage.size() == 0) {
+            totalGarage = "No Cars";
+        } else {
+            totalGarage = String.join(", ", Player.garage);
+        }
+        
+        if (Player.inventory.size() == 0) {
+            totalInventory = "No Items";
+        } else {
+            totalInventory = String.join(", ", Player.inventory);
+        }
+
+        //char[][] ascii = ReaderClass.getTxt("HackerGame/ASCIIText.txt");
         SoundPlayer.stopMusic();
         String filepath = "MusicFiles/endcredits.wav";
         SoundPlayer.PlayOnce(filepath);
         String outro = Char.sMods.magentaText + "A Game by: " + Char.sMods.reset + 
         "Sanjeth, Wyelin, Jeffery, Yash" + Char.sMods.magentaText + "\nMusic by: " + Char.sMods.reset + 
-        "Sanjeth Gobinath" + "\n100 please Mr. Fagella";
+        "Sanjeth Gobinath" + Char.sMods.greenText + "\n" +"\nPLAYER STATS:" + Char.sMods.reset + "\n" +
+        Char.sMods.magentaText + "\nHealth: " + Char.sMods.reset + Player.getHealth() + Char.sMods.magentaText +
+        "\nPeople suspicious: " + Char.sMods.reset + Player.getSus() + Char.sMods.magentaText + "\nInventory: " +
+        Char.sMods.reset + totalInventory + Char.sMods.magentaText + "\nGarage: " +
+        Char.sMods.reset + totalGarage + Char.sMods.magentaText + "\nArsenal: " +
+        Char.sMods.reset + totalGuns + "\n100 please Mr. Fagella";
         for(int i = 0; i < outro.length(); i++){
             System.out.print(outro.charAt(i));
             try{
@@ -37,7 +62,7 @@ public class GameManager {
             }
         }
         StdOut.println();
-        ReaderClass.print2DArr(ascii);
+        //ReaderClass.print2DArr(ascii);
         StdOut.println();
         StdOut.println();
 
@@ -51,174 +76,7 @@ public class GameManager {
         }
     }
     
-    public static void escapeScene(){
-        StdOut.println(Char.sMods.magentaText + "You have stolen all of the data. You need to escape the building." + Char.sMods.reset);
-        StdOut.println(Char.sMods.magentaText + "There is security all around the first and second floor. Choose an escape route." + Char.sMods.reset);
-        sleepThread(500);
-        StdOut.println("1. HVAC System");
-        StdOut.println("2. Elevator");
-        StdOut.println("3. Stairs");
-        StdOut.println("4. Helicopter");
-        int choice = StdIn.readInt();
-
-        switch (choice) {
-            case 1:
-                StdOut.println("You've chosen the HVAC system.");
-                hvacEscape();
-                break;
-            case 2:
-                StdOut.println("You've chosen the elevator, however SWAT was waiting for you.");
-                gameOver();
-                break;
-            case 3:
-                StdOut.println("You've chosen the stairs.");
-                stairsEscape();
-                break;
-            case 4:
-                StdOut.println("You've chosen the helicopter.");
-                helicopterEscape();
-                break;
-            default:
-                StdOut.println("Invalid choice. You've been caught.");
-                GameManager.gameOver();
-                Player.subtractHealth();
-                Player.checkHealth();
-                break;
-        }
-    }
-
-    public static void hvacEscape(){
-        StdOut.println(Char.sMods.magentaText + "You have chosen the HVAC system." + Char.sMods.reset);
-        StdOut.println(Char.sMods.magentaText + "You need to navigate through the ducts to avoid detection." + Char.sMods.reset);
-        sleepThread(500);
-        StdOut.println("1. Go straight");
-        StdOut.println("2. Turn left");
-        StdOut.println("3. Turn right");
-        int hvacChoice = StdIn.readInt();
-
-        switch (hvacChoice) {
-            case 1:
-                StdOut.println("You go straight and encounter a dead end. You run out of oxygen and die.");
-                Player.isDead();
-                break;
-            case 2:
-                StdOut.println("You turn left and find an exit. Congrats, you've successfully escaped.");
-                winGame();
-                break;
-            case 3:
-                StdOut.println("You turn right and find an exit. You've successfully escaped.");
-                GameManager.seqOver = true;
-                winGame();
-                break;
-            default:
-                StdOut.println("Invalid choice. You've been caught.");
-                GameManager.gameOver();
-                Player.subtractHealth();
-                Player.checkHealth();
-                break;
-        }
-    }
-
-    public static void stairsEscape(){
-        StdOut.println(Char.sMods.magentaText + "You have chosen the stairs." + Char.sMods.reset);
-        StdOut.println(Char.sMods.magentaText + "You need to navigate through the stairwell to reach the ground floor." + Char.sMods.reset);
-        sleepThread(500);
-        StdOut.println("1. Move quietly");
-        StdOut.println("2. Move quickly");
-        int stairsChoice = StdIn.readInt();
-
-        switch (stairsChoice) {
-            case 1:
-                StdOut.println("You move quietly, avoiding detection.");
-                sleepThread(500);
-                StdOut.println("1. Continue moving quietly");
-                StdOut.println("2. Move quickly now");
-                int quietChoice = StdIn.readInt();
-                if (quietChoice == 1) {
-                    StdOut.println("You continue moving quietly and reach the ground floor safely.");
-                    winGame();
-                } else {
-                    StdOut.println("You start moving quickly and make noise. Security hears you.");
-                    gameOver();
-                }
-                break;
-            case 2:
-                StdOut.println("You move quickly, making noise.");
-                sleepThread(500);
-                StdOut.println("1. Hide in a nearby room");
-                StdOut.println("2. Keep moving quickly");
-                int quickChoice = StdIn.readInt();
-                if (quickChoice == 1) {
-                    StdOut.println("You hide in a nearby room and wait for security to pass.");
-                    sleepThread(500);
-                    StdOut.println("You continue moving quietly and reach the ground floor safely.");
-                    winGame();
-                } else {
-                    StdOut.println("You keep moving quickly and security catches you.");
-                    gameOver();
-                }
-                break;
-            default:
-                StdOut.println("Invalid choice. You've been caught.");
-                gameOver();
-                Player.subtractHealth();
-                Player.checkHealth();
-                break;
-        }
-    }
-
-    public static void helicopterEscape(){
-        StdOut.println(Char.sMods.magentaText + "You have chosen the helicopter." + Char.sMods.reset);
-        StdOut.println(Char.sMods.magentaText + "You need to reach the rooftop to board the helicopter." + Char.sMods.reset);
-        sleepThread(500);
-        StdOut.println("1. Take the stairs");
-        StdOut.println("2. Use the elevator");
-        int heliChoice = StdIn.readInt();
-
-        switch (heliChoice) {
-            case 1:
-                StdOut.println(Char.sMods.magentaText + "You take the stairs, but security is patrolling the stairwell." + Char.sMods.reset);
-                sleepThread(500);
-                StdOut.println("1. Sneak past them");
-                StdOut.println("2. Confront them");
-                int stairChoice = StdIn.readInt();
-                if (stairChoice == 1) {
-                    StdOut.println(Char.sMods.magentaText + "You successfully sneak past the security and reach the rooftop." + Char.sMods.reset);
-                    winGame();
-                } else {
-                    StdOut.println(Char.sMods.magentaText + "You confront the security and a fight ensues." + Char.sMods.reset);
-                    Player.subtractHealth();
-                    Player.checkHealth();
-                    if (Player.getHealth() > 0) {
-                        StdOut.println(Char.sMods.magentaText + "You manage to defeat the security and reach the rooftop. You get into the helicopter and escape." + Char.sMods.reset);
-                        winGame();
-                    } else {
-                        gameOver();
-                    }
-                }
-                break;
-            case 2:
-                StdOut.println(Char.sMods.magentaText + "You use the elevator, but it gets stuck halfway." + Char.sMods.reset);
-                sleepThread(500);
-                StdOut.println("1. Climb through the hatch");
-                StdOut.println("2. Wait for help");
-                int elevatorChoice = StdIn.readInt();
-                if (elevatorChoice == 1) {
-                    StdOut.println(Char.sMods.magentaText + "You climb through the hatch and make your way to the rooftop. You escape with $2 million worth of data." + Char.sMods.reset);
-                    winGame();
-                } else {
-                    StdOut.println(Char.sMods.magentaText + "You wait for help, but security arrives and catches you." + Char.sMods.reset);
-                    gameOver();
-                }
-                break;
-            default:
-                StdOut.println("Invalid choice. You've been caught.");
-                gameOver();
-                Player.subtractHealth();
-                Player.checkHealth();
-                break;
-        }
-    }
+    
 
     public static void securityPickpocketEntrance() {
         try {
@@ -1069,7 +927,7 @@ public class GameManager {
                 StdOut.println(Char.sMods.magentaText + "You attempt to hack the scanner. It's a difficult task, but you manage to bypass the retinal scan." + Char.sMods.reset);
                 sleepThread(1500);
                 StdOut.println(Char.sMods.magentaText + "The door unlocks and you gain access to the server room." + Char.sMods.reset);
-                // Proceed to the next part of the game
+                enterServerRoom();
                 break;
             case 3:
                 StdOut.println(Char.sMods.magentaText + "You decide to look for another way in. You find a ventilation shaft that might lead to the server room." + Char.sMods.reset);
@@ -1077,10 +935,10 @@ public class GameManager {
                 StdOut.println(Char.sMods.magentaText + "You need a screwdriver to open the vent." + Char.sMods.reset);
                 if (Player.hasItem("Screwdriver")) {
                     StdOut.println(Char.sMods.magentaText + "You use the screwdriver to open the vent and crawl through." + Char.sMods.reset);
-                    // Proceed to the next part of the game
+                    enterServerRoom();
                 } else {
                     StdOut.println(Char.sMods.magentaText + "You don't have a screwdriver. You need to find one to proceed." + Char.sMods.reset);
-                    // Go back to searching for items
+                    interactionThreeA(); // Retry the interaction
                 }
                 break;
             default:
@@ -1262,8 +1120,8 @@ public class GameManager {
             }
 
             if (chosenServer == correctServer) {
-                StdOut.println("You have successfully hacked the correct server and stolen the confidential information!");
-                // Proceed to the next part of the game
+                StdOut.println("You have successfully hacked the correct server and stolen the confidential information. Now escape.");
+                escapeScene();
                 
                 return;
             } else {
@@ -1286,6 +1144,177 @@ public class GameManager {
         }
     }
 
+    public static void escapeScene(){
+        StdOut.println(Char.sMods.magentaText + "You have stolen all of the data. You need to escape the building." + Char.sMods.reset);
+        StdOut.println(Char.sMods.magentaText + "There is security all around the first and second floor. Choose an escape route." + Char.sMods.reset);
+        sleepThread(500);
+        StdOut.println("1. HVAC System");
+        StdOut.println("2. Elevator");
+        StdOut.println("3. Stairs");
+        StdOut.println("4. Helicopter");
+        int choice = StdIn.readInt();
+
+        switch (choice) {
+            case 1:
+                StdOut.println("You've chosen the HVAC system.");
+                hvacEscape();
+                break;
+            case 2:
+                StdOut.println("You've chosen the elevator, however SWAT was waiting for you.");
+                gameOver();
+                break;
+            case 3:
+                StdOut.println("You've chosen the stairs.");
+                stairsEscape();
+                break;
+            case 4:
+                StdOut.println("You've chosen the helicopter.");
+                helicopterEscape();
+                break;
+            default:
+                StdOut.println("Invalid choice. You've been caught.");
+                GameManager.gameOver();
+                Player.subtractHealth();
+                Player.checkHealth();
+                break;
+        }
+    }
+
+    public static void hvacEscape(){
+        StdOut.println(Char.sMods.magentaText + "You have chosen the HVAC system." + Char.sMods.reset);
+        StdOut.println(Char.sMods.magentaText + "You need to navigate through the ducts to avoid detection." + Char.sMods.reset);
+        sleepThread(500);
+        StdOut.println("1. Go straight");
+        StdOut.println("2. Turn left");
+        StdOut.println("3. Turn right");
+        int hvacChoice = StdIn.readInt();
+
+        switch (hvacChoice) {
+            case 1:
+                StdOut.println("You go straight and encounter a dead end. You run out of oxygen and die... lol L");
+                Player.isDead();
+                break;
+            case 2:
+                StdOut.println("You turn left and find an exit. Congrats, you've successfully escaped.");
+                winGame();
+                break;
+            case 3:
+                StdOut.println("You turn right and find an exit. You've successfully escaped.");
+                GameManager.seqOver = true;
+                winGame();
+                break;
+            default:
+                StdOut.println("Invalid choice. You've been caught.");
+                GameManager.gameOver();
+                Player.subtractHealth();
+                Player.checkHealth();
+                break;
+        }
+    }
+
+    public static void stairsEscape(){
+        StdOut.println(Char.sMods.magentaText + "You have chosen the stairs." + Char.sMods.reset);
+        StdOut.println(Char.sMods.magentaText + "You need to navigate through the stairwell to reach the ground floor." + Char.sMods.reset);
+        sleepThread(500);
+        StdOut.println("1. Move quietly");
+        StdOut.println("2. Move quickly");
+        int stairsChoice = StdIn.readInt();
+
+        switch (stairsChoice) {
+            case 1:
+                StdOut.println("You move quietly, avoiding detection.");
+                sleepThread(500);
+                StdOut.println("1. Continue moving quietly");
+                StdOut.println("2. Move quickly now");
+                int quietChoice = StdIn.readInt();
+                if (quietChoice == 1) {
+                    StdOut.println("You continue moving quietly and reach the ground floor safely.");
+                    winGame();
+                } else {
+                    StdOut.println("You start moving quickly and make noise. Security hears you.");
+                    gameOver();
+                }
+                break;
+            case 2:
+                StdOut.println("You move quickly, making noise.");
+                sleepThread(500);
+                StdOut.println("1. Hide in a nearby room");
+                StdOut.println("2. Keep moving quickly");
+                int quickChoice = StdIn.readInt();
+                if (quickChoice == 1) {
+                    StdOut.println("You hide in a nearby room and wait for security to pass.");
+                    sleepThread(500);
+                    StdOut.println("You continue moving quietly and reach the ground floor safely.");
+                    winGame();
+                } else {
+                    StdOut.println("You keep moving quickly and security catches you.");
+                    gameOver();
+                }
+                break;
+            default:
+                StdOut.println("Invalid choice. You've been caught.");
+                gameOver();
+                Player.subtractHealth();
+                Player.checkHealth();
+                break;
+        }
+    }
+
+    public static void helicopterEscape(){
+        StdOut.println(Char.sMods.magentaText + "You have chosen the helicopter." + Char.sMods.reset);
+        StdOut.println(Char.sMods.magentaText + "You need to reach the rooftop to board the helicopter." + Char.sMods.reset);
+        sleepThread(500);
+        StdOut.println("1. Take the stairs");
+        StdOut.println("2. Use the elevator");
+        int heliChoice = StdIn.readInt();
+
+        switch (heliChoice) {
+            case 1:
+                StdOut.println(Char.sMods.magentaText + "You take the stairs, but security is patrolling the stairwell." + Char.sMods.reset);
+                sleepThread(500);
+                StdOut.println("1. Sneak past them");
+                StdOut.println("2. Confront them");
+                int stairChoice = StdIn.readInt();
+                if (stairChoice == 1) {
+                    StdOut.println(Char.sMods.magentaText + "You successfully sneak past the security and reach the rooftop." + Char.sMods.reset);
+                    winGame();
+                } else {
+                    StdOut.println(Char.sMods.magentaText + "You confront the security and a fight ensues." + Char.sMods.reset);
+                    Player.subtractHealth();
+                    Player.checkHealth();
+                    if (Player.getHealth() > 0) {
+                        StdOut.println(Char.sMods.magentaText + "You manage to defeat the security and reach the rooftop. You get into the helicopter and escape." + Char.sMods.reset);
+                        winGame();
+                    } else {
+                        gameOver();
+                    }
+                }
+                break;
+            case 2:
+                StdOut.println(Char.sMods.magentaText + "You use the elevator, but it gets stuck halfway." + Char.sMods.reset);
+                sleepThread(500);
+                StdOut.println("1. Climb through the hatch");
+                StdOut.println("2. Wait for help");
+                int elevatorChoice = StdIn.readInt();
+                if (elevatorChoice == 1) {
+                    StdOut.println(Char.sMods.magentaText + "You climb through the hatch and make your way to the rooftop. You escape with $2 million worth of data." + Char.sMods.reset);
+                    winGame();
+                } else {
+                    StdOut.println(Char.sMods.magentaText + "You wait for help, but security arrives and catches you." + Char.sMods.reset);
+                    gameOver();
+                }
+                break;
+            default:
+                StdOut.println("Invalid choice. You've been caught.");
+                gameOver();
+                Player.subtractHealth();
+                Player.checkHealth();
+                break;
+        }
+    }
+
+
+    //MISC
     private static String generateMemorySequence(int length) {
         Random random = new Random();
         StringBuilder sequence = new StringBuilder();
@@ -1301,8 +1330,6 @@ public class GameManager {
         }
     }
 
-    
-    //THREAD SLEEPING
     public static void sleepThread(int ms) {
         try {
             Thread.sleep(ms);
@@ -1311,6 +1338,3 @@ public class GameManager {
         }
     }
 }
-
-
-

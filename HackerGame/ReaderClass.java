@@ -20,11 +20,13 @@ public class ReaderClass {
             throw new RuntimeException(name + " isn't a file");
         }
     }
+    
     public static void print2DArr(char[][] array) {
         for (char[] row : array) {
             System.out.println(row);
         }
     }
+    
     public static char[][] getTxt(String name){
         List<String> list = parseTxt(name);
 

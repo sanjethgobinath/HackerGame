@@ -3,7 +3,7 @@ package HackerGame;
 public class Game {
         public static void main(String[] args){
         //VIDEO PLAYER - UNCOMMENT BEFORE SUBMITTING
-        /* 
+        
         Thread videoThread = new Thread(() -> {
             VideoPlayer.playVideo("HackerGame/introVid.mp4");
         });
@@ -14,7 +14,7 @@ public class Game {
             e.printStackTrace();
         }
         GameManager.sleepThread(97200); //waiting for 97000 second video with 200ms buffer
-        */
+        
         String filepath = "MusicFiles/backgroundmusic1.wav";
         SoundPlayer.PlayMusic(filepath);
         // this is a test from somwhere online
@@ -47,7 +47,7 @@ public class Game {
         
         System.out.println(); //Enter next line        
         
-        GameManager.winGame();
+        
         GameManager.findPassword();
         GameManager.sleepThread(1000);
         GameManager.securityPickpocketEntrance();

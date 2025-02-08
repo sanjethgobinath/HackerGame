@@ -14,7 +14,6 @@ public class Player {
     public static ArrayList<String> inventory = new ArrayList<>();
     public static ArrayList<String> garage = new ArrayList<>();
     public static ArrayList<String> guns = new ArrayList<>();
-    //possible cars- Honda Civic Type-R (2022) Mitsubishi Lancer Evo X (2015) Subaru WRX (2025) Toyota GR Supra (2025)
     public static int sus = 0;
     
     //  HEALTH INFORMATION
@@ -73,6 +72,20 @@ public class Player {
         }
     }
 
+    public static ArrayList<String> finalInventory(){
+        ArrayList<String> empty = new ArrayList<>();
+        empty.add("uh oh");
+        try {
+            if(inventory.size() == 0){
+                return null;
+            }else{
+                return inventory;
+            }
+        } catch (Exception e) {
+            return empty;
+        }
+    }
+
     public static void useItem(String item) {
         if (inventory.contains(item)) {
             // Logic for using the item
@@ -101,6 +114,7 @@ public class Player {
         }
     }
 
+    // ARSENAL MANAGEMENT
     public static void addGun(String gun){
         guns.add(gun);
         System.out.println(greenText + gun + RESET + " has been added to your arsenal.");
@@ -117,8 +131,37 @@ public class Player {
             
         }
     }
-    // SOCIAL INTERACTIONS
+
+    public static ArrayList<String> finalArsenal(){
+        ArrayList<String> empty = new ArrayList<>();
+        empty.add("uh oh");
+        try {
+            if(guns.size() == 0){
+                return null;
+            }else{
+                return guns;
+            }
+        } catch (Exception e) {
+            return empty;
+        }
+    }
+
+    // GARAGE MANAGEMENT
+    public static ArrayList<String> finalGarage(){
+        ArrayList<String> empty = new ArrayList<>();
+        empty.add("uh oh");
+        try {
+            if(garage.size() == 0){
+                return null;
+            }else{
+                return garage;
+            }
+        } catch (Exception e) {
+            return empty;
+        }
+    }
     
+    // SOCIAL INTERACTIONS
     public static void addSus(){
         sus++;
         if(sus == 1){
