@@ -1,4 +1,5 @@
 package HackerGame;
+import java.io.IOException;
 import java.util.*;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
@@ -13,7 +14,7 @@ public class GameManager {
     public static boolean janitorHelp = false;
 
     public static void gameOver(){
-        System.out.println("Game Over");
+        StdOut.println("Game Over");
         System.exit(0);
     }
     
@@ -76,39 +77,39 @@ public class GameManager {
         }
     }
     
-    
-
     public static void securityPickpocketEntrance() {
         try {
-            System.out.println(Char.sMods.redText + "A Security Guard Has Found You, Hide? [Y/N]" + Char.sMods.reset);
+            StdOut.println(Char.sMods.redText + "A Security Guard Has Found You, Hide? [Y/N]" + Char.sMods.reset);
             while(true){
                 String input = StdIn.readString().trim().toUpperCase();
                 if (input.equals("Y")) {
-                    System.out.println("He is distracted. Press E to pickpocket.");
+                    StdOut.println("He is distracted. Press E to pickpocket.");
                     String secInput = StdIn.readString().trim().toUpperCase();
                     if (secInput.equals("E")) {
-                        System.out.println(Char.sMods.greenText + "Pickpocket Successful. Keycard Obtained." + Char.sMods.reset);
+                        StdOut.println(Char.sMods.greenText + "Pickpocket Successful. Keycard Obtained." + Char.sMods.reset);
                         Player.addItem("Keycard");
-                        System.out.println("Picked up keys for a " + Char.sMods.greenText + "Honda Civic Type-R." + Char.sMods.reset);
+                        StdOut.println();
+                        StdOut.println("Picked up keys for a " + Char.sMods.greenText + "Honda Civic Type-R." + Char.sMods.reset);
                         Player.garage.add("Honda Civic Type-R (2022)");
-                        System.out.println("Obtained a Glock 19.");
+                        StdOut.println();
+                        StdOut.println("Obtained a Glock 19.");
                         Player.addGun("Glock 19");
                         break;
                     } else {
-                        System.out.println(Char.sMods.redText + "Missed the opportunity to pickpocket." + Char.sMods.reset);
+                        StdOut.println(Char.sMods.redText + "Missed the opportunity to pickpocket." + Char.sMods.reset);
                         break;
                     }
                 } else if (input.equals("N")) {
-                    System.out.println(Char.sMods.redText + "INTEGRITY COMPROMISED. " + Char.sMods.reset + "You have lost 2 health");
+                    StdOut.println(Char.sMods.redText + "INTEGRITY COMPROMISED. " + Char.sMods.reset + "You have lost 2 health");
                     Player.subtractHealth();
                     Player.subtractHealth();
                     break;
                 } else {
-                    System.out.println("invalid input. try again.");
+                    StdOut.println("invalid input. try again.");
                 }
             }
         } catch (NoSuchElementException e) {
-            System.out.println(Char.sMods.redText + "Error reading input. Please try again." + Char.sMods.reset);
+            StdOut.println(Char.sMods.redText + "Error reading input. Please try again." + Char.sMods.reset);
         }
     }
 
@@ -125,36 +126,33 @@ public class GameManager {
 
         // Loop until the correct password is guessed
         while (true) {
-            System.out.println("Enter Password:");
+            StdOut.println("Enter Password:");
             String guess = StdIn.readString(); // Get user input
             
 
             // Check if the guess is correct
             if (guess.equals(password)) {
-                System.out.println(Char.sMods.greenText + "Correct Password. You may proceed." + Char.sMods.reset);
-                System.out.println("*Entering Y-Systems Headquarters...*");
+                StdOut.println(Char.sMods.greenText + "Correct Password. You may proceed." + Char.sMods.reset);
+                StdOut.println("*Entering Y-Systems Headquarters...*");
                 break; // Exit the loop if the guess is correct
             } else {
-                System.out.println(Char.sMods.redText + "Wrong Password. Try again." + Char.sMods.reset);
+                StdOut.println(Char.sMods.redText + "Wrong Password. Try again." + Char.sMods.reset);
                 attempts++;
                 if(attempts % 2 == 0){
                     Player.addSus();
                     Player.checkSus();
                 }
-                System.out.println(); // Spacing
+                StdOut.println(); // Spacing
 
-                // Provide a hint if health is low
+                // Provide a hint after 5 failed attempts
                 if (attempts >= 5 && !hintGiven) {
-                    System.out.println("Hint: animal starts with " + Char.sMods.greenText + password.substring(3, 5) + Char.sMods.reset
+                    StdOut.println("Hint: animal starts with " + Char.sMods.greenText + password.substring(3, 5) + Char.sMods.reset
                     + " is " + animal.length() + " letters long" + " and number is " + Char.sMods.greenText + randomInt + Char.sMods.reset);
                     hintGiven = true;
                     
                 }
             }
         }
-
-        // Close the scanner only after the method is completely done
-        //scanner.close();
     }
 
     public static void dexterityPuzzle() {
@@ -220,6 +218,8 @@ public class GameManager {
                 if (!latch.await(10, TimeUnit.SECONDS)) {
                     caught = true;
                     StdOut.println("Time's up. The janitor has caught you with contrabands.");
+                    Player.addSus();
+                    Player.checkSus();
                     break;
                 }
             } catch (InterruptedException e) {
@@ -237,7 +237,7 @@ public class GameManager {
             }
 
             // Randomly determine if the janitor catches the user
-            if (random.nextInt(10) < 2) { // 20% chance of getting caught each round
+            if (random.nextInt(20) < 1) { // 5% chance of getting caught each round
                 caught = true;
                 StdOut.println("The janitor has caught you with contrabands.");
             } else {
@@ -259,7 +259,7 @@ public class GameManager {
         SoundPlayer.PlayMusic(filepath);
         int count = 1;
         StdOut.println("Choose a car: ");
-        System.out.println();
+        StdOut.println();
         if(Player.garage.isEmpty()){
             StdOut.println("Garage is empty. You need to escape on foot.");
             onFoot();
@@ -275,10 +275,10 @@ public class GameManager {
                         e.printStackTrace();
                     }
                 }
-                System.out.println();
+                StdOut.println();
             }
 
-            System.out.println();
+            StdOut.println();
             StdOut.println("Which car do you want to use? [1, 2, 3]");
             while(true){
                 int choice = StdIn.readInt();
@@ -300,7 +300,7 @@ public class GameManager {
                         StdOut.println("Such a car does not exist.");
                     }
                 } catch (IndexOutOfBoundsException e) {
-                    System.out.println("Car not unlocked yet.");
+                    StdOut.println("Car not unlocked yet.");
                 }
             }
         }
@@ -467,7 +467,7 @@ public class GameManager {
                             e.printStackTrace();
                         }
                     }
-                    System.out.println();
+                    StdOut.println();
                 }
 
                 int gunOption = StdIn.readInt();
@@ -1047,9 +1047,9 @@ public class GameManager {
         while (attempts > 0 && !caught) {
             // Memory puzzle
             String memorySequence = generateMemorySequence(5);
-            StdOut.println("Memory Puzzle: Remember this sequence: " + memorySequence);
+            StdOut.println("CASE SENSITIVE; Remember this sequence: " + memorySequence);
             sleepThread(5000); // Give the player 5 seconds to memorize the sequence
-            clearConsole();
+            clearScreen();
 
             StdOut.println("Enter the sequence you just saw:");
             String userSequence = StdIn.readString().trim();
@@ -1120,8 +1120,30 @@ public class GameManager {
             }
 
             if (chosenServer == correctServer) {
-                StdOut.println("You have successfully hacked the correct server and stolen the confidential information. Now escape.");
-                escapeScene();
+                StdOut.println("You have chosen the correct server. Download the data and inject this malware" +
+                Char.sMods.greenText + "-->" + Char.sMods.reset + Char.sMods.redText + "VeryDangerousMalware.exe" +
+                Char.sMods.reset);
+                StdOut.println("Press E to inject the malware.");
+                String injectMalware = StdIn.readString().trim().toUpperCase();
+                if(injectMalware.equals("E")){
+                    for (int j = 0; j < 3; j++) {
+                        StdOut.print("Injecting");
+                        for (int i = 0; i < 3; i++) {
+                            StdOut.print(".");
+                            sleepThread(500); // Adjust the delay as needed
+                        }
+                        StdOut.print("\r"); // Carriage return to overwrite the line
+                        StdOut.print("           \r"); // Clear the line
+                    }
+                    StdOut.println("You have successfully hacked the correct server and stolen the confidential information. Now escape...");
+                    sleepThread(1500);
+                    escapeScene();
+                    
+                    return;
+                } else {
+                    StdOut.println("You had one job bruh. You're fired, and the cops are onto you.");
+                    policeChase();
+                }
                 
                 return;
             } else {
@@ -1156,19 +1178,15 @@ public class GameManager {
 
         switch (choice) {
             case 1:
-                StdOut.println("You've chosen the HVAC system.");
                 hvacEscape();
                 break;
             case 2:
-                StdOut.println("You've chosen the elevator, however SWAT was waiting for you.");
                 gameOver();
                 break;
             case 3:
-                StdOut.println("You've chosen the stairs.");
                 stairsEscape();
                 break;
             case 4:
-                StdOut.println("You've chosen the helicopter.");
                 helicopterEscape();
                 break;
             default:
@@ -1334,6 +1352,19 @@ public class GameManager {
         try {
             Thread.sleep(ms);
         } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void clearScreen() {
+        try {
+            if (System.getProperty("os.name").contains("Windows")) {
+                new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+            } else {
+                System.out.print("\033[H\033[2J");
+                System.out.flush();
+            }
+        } catch (IOException | InterruptedException e) {
             e.printStackTrace();
         }
     }

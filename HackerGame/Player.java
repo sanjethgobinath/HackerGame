@@ -173,14 +173,13 @@ public class Player {
     }
 
     public static void checkSus(){
-        if(sus == 2){
+        if(sus == 3){
             System.out.println(redText + "Be cautious. Multiple people are suspicious of you." + RESET);
         }else if(sus == 5){
-            System.out.println(redText + "Too many people are suspiscious of you. They're considering calling the police." + RESET);
-        }else if(sus == 7){
             System.out.println(redText + "Police have been called." + RESET);
-        }else if(sus == 10){
+            GameManager.sleepThread(1000);
             System.out.println(redText + "Police are here. Get ready to run." + RESET);
+            GameManager.sleepThread(500);
             try{
                 Thread.sleep(1000);
             } catch (InterruptedException e){

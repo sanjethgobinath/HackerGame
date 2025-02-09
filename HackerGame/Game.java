@@ -1,8 +1,10 @@
 package HackerGame;
 
+import java.io.File;
+import java.io.IOException;
+
 public class Game {
         public static void main(String[] args){
-        //VIDEO PLAYER - UNCOMMENT BEFORE SUBMITTING
         
         Thread videoThread = new Thread(() -> {
             VideoPlayer.playVideo("HackerGame/introVid.mp4");
@@ -13,19 +15,19 @@ public class Game {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        GameManager.sleepThread(97200); //waiting for 97000 second video with 200ms buffer
+        
+        GameManager.sleepThread(97500); //waiting for 97000 second video with 500ms buffer
         
         String filepath = "MusicFiles/backgroundmusic1.wav";
         SoundPlayer.PlayMusic(filepath);
         // this is a test from somwhere online
         //Instructions
         //new test
-        StdOut.println(Char.sMods.yellowText + "Music by Sanjeth Gobinath" + Char.sMods.reset);
         System.out.println(Char.sMods.magentaText + Char.sMods.italicsStart + 
             "\nIn order to enter the building you need to guess the password." +
-            "\nThe password starts with the word " + Char.sMods.redText + "red, "+
+            "\nThe password starts with the word " + Char.sMods.redText + "red"+
             Char.sMods.reset + Char.sMods.magentaText +
-            "has a common animal that starts with F, and a number from 1-5." + 
+            ", has a common animal that starts with F, and a number from 1-5." + 
             "\nGood Luck, Comrade." +
             Char.sMods.italicsEnd + Char.sMods.reset);
         System.out.println();
