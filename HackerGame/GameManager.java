@@ -1,4 +1,4 @@
-package HackerGame;
+java package HackerGame;
 import java.io.IOException;
 import java.util.*;
 import java.util.concurrent.CountDownLatch;
@@ -1165,6 +1165,7 @@ public class GameManager {
             }
         }
     }
+    
 
     public static void escapeScene(){
         StdOut.println(Char.sMods.magentaText + "You have stolen all of the data. You need to escape the building." + Char.sMods.reset);
